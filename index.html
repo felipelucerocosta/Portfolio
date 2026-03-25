@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Felipe Costa - Junior Full Stack Developer Portfolio - Innovando con Código">
+    <title>Felipe Costa | Full Stack Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;800&family=Permanent+Marker&family=Shadows+Into+Light&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome & Devicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="css/index.css?v=2">
+</head>
+
+<body class="dark-theme">
+    <div class="binary-bg"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="network-canvas"></canvas>
+    <div id="floating-numbers-container"></div>
+    <header class="navbar">
+        <nav class="container">
+            <div class="logo">FELIPE <span>COSTA</span></div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Inicio</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#education">Formación Académica</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+           
+            <div class="menu-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero & About Merged Section -->
+        <section id="home" class="hero-merged scroll-spy-target">
+            <div class="hero-container">
+                <div class="container hero-content">
+                    <h1 class="headline">Hola, soy Felipe.<br>Diseño&nbsp;<span id="typewriter"></span></h1>
+                    <p class="description">Construyendo el futuro digital desde el frontend hasta el backend con soluciones creativas y eficientes.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary shadow-glow">Explorar Proyectos</a>
+                        <a href="#contact" class="btn btn-secondary">Contratame</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="about" class="about-container scroll-spy-target">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-image">
+                            <div class="image-box">
+                                <img src="./Pescador cibernético en traje oscuro.png" alt="Avatar Pez Diablo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+                            </div>
+                        </div>
+                        <div class="about-info">
+                            <h2 class="section-title">Sobre Mí</h2>
+                            <h3 class="about-subtitle">Combinando Creatividad y Tecnología</h3>
+                            <p class="about-text">
+                               ¡Hola! Soy estudiante de 6º año en la Escuela Técnica N° 29 Reconquista de Buenos Aires. Me interesa trabajar en equipo, aprender constantemente y adaptarme a nuevos desafíos, manteniendo siempre una actitud proactiva.
+
+Actualmente me estoy formando en Desarrollo Web, Redes Informáticas e Inteligencia Artificial (IA), principalmente a través de proyectos personales donde aplico y refuerzo mis conocimientos. Tengo una mayor orientación hacia el frontend, enfocándome en la creación de interfaces claras y una buena experiencia de usuario.
+
+Además, utilizo la IA como una herramienta para optimizar tiempos, cubrir mis falencias y corregir errores, lo que me permite mejorar de forma continua en cada proyecto..
+                            </p>
+                            <div class="hero-actions">
+                                <a href="#contact" class="btn btn-primary">Contratame</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="sections alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Formación Académica</h2>
+                </div>
+                <div class="timeline" id="education-timeline"></div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="sections">
+            <div class="container project-section-container">
+                <div class="section-header centered">
+                    <h2 class="section-title">Proyectos</h2>
+                    <p class="section-subtitle">Gira el anillo para explorar mis creaciones</p>
+                    
+                    <div class="project-filters">
+                        <button class="filter-btn active" data-filter="todos">Todos</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="ia">IA</button>
+                        <button class="filter-btn" data-filter="programas">Sistemas</button>
+                    </div>
+                </div>
+                
+                <div class="project-scene">
+                    <div class="project-ring" id="project-container">
+                        <!-- Projects rendered here by JS -->
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="sections alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Habilidades</h2>
+                </div>
+                <div class="skills-wrapper">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <div class="skills-grid" id="frontend-skills"></div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <div class="skills-grid" id="backend-skills"></div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Herramientas</h3>
+                        <div class="skills-grid" id="tools-skills"></div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Habilidades Blandas</h3>
+                        <div class="skills-grid" id="blandas-skills"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="sections">
+            <div class="container">
+                <div class="contact-card-v2 glass-card">
+                    <div class="contact-visual">
+                        <div class="cyber-graffiti">HIRE<br><span>ME</span></div>
+                        <p class="contact-subtext">¿Buscás sumar talento técnico a tu equipo? Hablemos sobre cómo puedo aportar valor a tu empresa.</p>
+                        <div class="social-links-contact">
+                            <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:felipelucero534@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form action="https://formsubmit.co/felipelucero534@gmail.com" method="POST" class="contact-form-v2">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="¡Nueva propuesta laboral desde tu Portfolio!">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            
+                            <div class="input-group">
+                                <input type="text" name="name" id="name" required placeholder=" ">
+                                <label for="name">Tu Nombre</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" name="email" id="email" required placeholder=" ">
+                                <label for="email">Tu Email</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <div class="input-group">
+                                <textarea name="message" id="message" required placeholder=" "></textarea>
+                                <label for="message">Contame sobre el puesto o propuesta...</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-cyber">
+                                <span>Enviar Mensaje</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Modal - The "Magic" -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-content glass-card">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-body-rich">
+                <div class="modal-main-content">
+                    <span id="modal-category" class="modal-category-tag">Categoría</span>
+                    <h2 id="modal-title">Título del Proyecto</h2>
+                    
+                    <div class="modal-gallery-premium">
+                        <div class="mesh-bg-modal"></div>
+                        <div class="gallery-slider" id="gallery-slider">
+                            <!-- Images will be injected here -->
+                        </div>
+                        <div class="gallery-controls">
+                            <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="gallery-dots" id="gallery-dots"></div>
+                        <div class="floating-shapes">
+                            <span class="shape s1"></span>
+                            <span class="shape s2"></span>
+                            <span class="shape s3"></span>
+                        </div>
+                        <i id="modal-icon"></i>
+                    </div>
+                    <div class="modal-description-section">
+                        <h3>Sobre el Proyecto</h3>
+                        <p id="modal-long-desc">Descripción detallada...</p>
+                        <div class="modal-features-premium">
+                            <h4>Funcionalidades Destacadas</h4>
+                            <ul id="modal-features-list"></ul>
+                        </div>
+                    </div>
+                </div>
+                <aside class="modal-sidebar">
+                    <div class="sidebar-block">
+                        <h4>Stack Tecnológico</h4>
+                        <div class="modal-tags" id="modal-tags"></div>
+                    </div>
+                    <div class="sidebar-block">
+                        <h4>Links del Proyecto</h4>
+                        <div class="modal-actions-sidebar">
+                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank"><i class="fab fa-github"></i> Ver Código</a>
+                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="btn-modal btn-primary btn-cyber" id="modal-process" style="margin-top: 1rem; width: 100%;"><i class="fas fa-terminal"></i> Ver Proceso</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <p>&copy; 2026 Felipe Costa. Crafted with <i class="fas fa-heart" style="color: var(--primary)"></i></p>
+            </div>
+            
+            <div class="footer-nav">
+                <a href="#home">Inicio</a>
+                <a href="#skills">Habilidades</a>
+                <a href="#contact">Contacto</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:felipe@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js?v=1"></script>
+    <script src="js/main.js?v=3"></script>
+</body>
+
+</html>

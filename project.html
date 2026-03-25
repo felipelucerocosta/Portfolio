@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Proyecto | Felipe Costa</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome & Devicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="css/index.css?v=2">
+    <style>
+        .project-details-hero {
+            padding: 12rem 0 3rem 0;
+            text-align: center;
+        }
+        .project-content-grid {
+            display: block;
+            margin-top: 2rem;
+            margin-bottom: 5rem;
+        }
+        .glass-panel {
+            background: rgba(11, 1, 21, 0.7);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(var(--project-color-rgb), 0.3);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(var(--project-color-rgb), 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(var(--project-color-rgb), 0.6);
+            box-shadow: 0 10px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(var(--project-color-rgb), 0.2);
+        }
+        .gallery-preview img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.4s ease;
+        }
+        .gallery-preview img:hover {
+            transform: scale(1.02);
+            border-color: rgba(var(--project-color-rgb), 0.5);
+        }
+        #project-title {
+            color: var(--project-color);
+            text-shadow: 0 0 15px rgba(var(--project-color-rgb), 0.6);
+        }
+        .section-header-mini {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .section-header-mini i {
+            color: var(--project-color);
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <div class="binary-bg"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="network-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity:0.3;"></canvas>
+    
+    <header class="navbar">
+        <nav class="container">
+            <div class="logo">FELIPE <span>COSTA</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html#projects" class="active"><i class="fas fa-arrow-left"></i> Volver a Proyectos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" id="project-main" style="display:none; position: relative; z-index: 10;">
+        <section class="project-details-hero">
+            <h3 id="project-category" class="about-subtitle" style="color: var(--text-dim); letter-spacing: 2px;">Categoría</h3>
+            <h1 id="project-title" class="section-title" style="font-size: 3.5rem; margin-top: 1rem;">Cargando...</h1>
+        </section>
+
+        <div class="project-content-grid">
+            <div class="project-main-info glass-panel">
+                <!-- Header and Inline Tags Area -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <h2 class="section-header-mini" style="margin: 0;"><i class="fas fa-cogs"></i> Descripción General</h2>
+                        <div id="project-tags-inline" style="display: flex; align-items: center; gap: 1rem;"></div>
+                    </div>
+                    <div id="project-links-inline" style="display: flex; gap: 1.2rem; align-items: center;"></div>
+                </div>
+
+                <p id="project-longDesc" class="about-text" style="font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-top: 1.5rem;"></p>
+                
+                <h2 class="section-header-mini" style="margin-top: 3rem;"><i class="fas fa-star"></i> Funcionalidades Destacadas</h2>
+                <ul id="project-features-main" class="about-text" style="margin-top: 1.5rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem; color: #ccc;"></ul>
+                
+                <div id="project-meta-details" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 3rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div>
+                        <h4 style="color: var(--project-color); margin-bottom: 0.5rem; font-family: var(--font-heading);"><i class="fas fa-bullseye"></i> Problemática y Objetivos</h4>
+                        <p id="project-problem" class="about-text" style="font-size: 0.95rem;">-</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--project-color); margin-bottom: 0.5rem; font-family: var(--font-heading);"><i class="fas fa-clock"></i> Tiempo de Desarrollo</h4>
+                        <p id="project-duration" class="about-text" style="font-size: 0.95rem;">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .icon-tooltip {
+                position: relative;
+                font-size: 2rem;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .icon-tooltip.fas, .icon-tooltip.fab {
+                color: #fff; /* Enlaces y genéricos en blanco */
+            }
+            .icon-tooltip:hover {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 8px rgba(var(--project-color-rgb), 0.5));
+            }
+            .icon-tooltip::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                bottom: -35px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.9);
+                color: #fff;
+                padding: 0.4rem 0.8rem;
+                border-radius: 6px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+                font-family: var(--font-main);
+                z-index: 100;
+                font-weight: 600;
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+            .icon-tooltip:hover::after {
+                opacity: 1;
+            }
+        </style>
+
+        <style>
+            .horizontal-timeline {
+                display: flex;
+                overflow-x: auto;
+                padding: 1.5rem 0.5rem 3rem 0.5rem;
+                gap: 5rem; /* Espacio extra para las flechas desarrolladas */
+                margin-top: 1rem;
+                scrollbar-width: thin;
+                scrollbar-color: var(--project-color) transparent;
+            }
+            .horizontal-timeline::-webkit-scrollbar {
+                height: 8px;
+            }
+            .horizontal-timeline::-webkit-scrollbar-track {
+                background: rgba(255,255,255,0.05);
+                border-radius: 4px;
+            }
+            .horizontal-timeline::-webkit-scrollbar-thumb {
+                background: var(--project-color);
+                border-radius: 4px;
+            }
+            .horizontal-timeline-item {
+                flex: 0 0 360px;
+                position: relative;
+                background: rgba(255,255,255,0.02);
+                border: 1px solid rgba(255,255,255,0.05);
+                border-radius: 16px;
+                padding: 1.5rem;
+                transition: all 0.3s ease;
+                display: flex;
+                flex-direction: column;
+            }
+            /* Línea conectora brillante - Morado Neon */
+            .horizontal-timeline-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: -5rem;
+                width: 5rem;
+                height: 5px; /* Más robusta */
+                background: linear-gradient(90deg, rgba(176, 38, 255, 0.9), rgba(176, 38, 255, 0.1));
+                transform: translateY(-50%);
+                box-shadow: 0 0 15px rgba(176, 38, 255, 0.6);
+                cursor: default;
+                pointer-events: none;
+                z-index: 0;
+            }
+            /* Flecha doble animada sobre la línea - Morado Neon */
+            .horizontal-timeline-item:not(:last-child)::before {
+                content: '\f101'; /* Angle Double Right FontAwesome */
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                top: 50%;
+                right: -2.5rem; /* Centrado geográfico exacto en el gap de 5rem */
+                color: #b026ff; /* Morado neon vivo */
+                font-size: 2.5rem; /* Tamaño adecuado */
+                text-shadow: 0 0 20px rgba(176, 38, 255, 0.9);
+                z-index: 1;
+                pointer-events: none;
+                animation: flowArrowPurple 2s infinite ease-in-out;
+                filter: drop-shadow(0 0 5px rgba(176, 38, 255, 0.8));
+            }
+            
+            @keyframes flowArrowPurple {
+                0% { transform: translate(50%, -50%) translateX(-12px); opacity: 0.5; filter: drop-shadow(0 0 2px rgba(176, 38, 255, 0)); }
+                50% { transform: translate(50%, -50%) translateX(12px); opacity: 1; text-shadow: 0 0 30px rgba(176, 38, 255, 1); filter: drop-shadow(0 0 15px rgba(176, 38, 255, 1)); }
+                100% { transform: translate(50%, -50%) translateX(-12px); opacity: 0.5; filter: drop-shadow(0 0 2px rgba(176, 38, 255, 0)); }
+            }
+
+            .horizontal-timeline-item:hover {
+                border-color: rgba(var(--project-color-rgb), 0.4);
+                background: rgba(var(--project-color-rgb), 0.08);
+                transform: translateY(-5px);
+                box-shadow: 0 12px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(var(--project-color-rgb), 0.1);
+            }
+            .horizontal-timeline-title {
+                font-family: var(--font-heading);
+                font-size: 1.3rem;
+                color: #fff;
+                margin-bottom: 0.5rem;
+                margin-top: 0;
+            }
+            .horizontal-timeline-desc {
+                color: #aaa;
+                margin-bottom: 1.5rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+                flex-grow: 1;
+            }
+            .gallery-images-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                margin-top: auto;
+            }
+            .gallery-images-grid img {
+                height: 100px;
+                width: auto;
+                min-width: 140px;
+                flex: 1 1 auto;
+                object-fit: cover;
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.1);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+            .gallery-images-grid img:hover {
+                transform: scale(1.05) translateY(-5px);
+                border-color: rgba(var(--project-color-rgb), 0.6);
+                box-shadow: 0 10px 25px rgba(var(--project-color-rgb), 0.3);
+            }
+        </style>
+
+        <!-- Secciones Aparte: Líneas de tiempo transversales -->
+        <div class="project-horizontal-sections" style="margin-bottom: 5rem;">
+            <div class="glass-panel" style="margin-bottom: 3rem;">
+                <h2 class="section-header-mini"><i class="fas fa-boxes"></i> Versiones y Entregables</h2>
+                <div class="horizontal-timeline" id="project-versions-timeline">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <h2 class="section-header-mini"><i class="fas fa-wrench"></i> Complicaciones y Soluciones</h2>
+                <div class="horizontal-timeline" id="project-complications-timeline">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <p>&copy; 2026 Felipe Costa. Elaborado con pasión.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Lightbox Modal Globals */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 85vh;
+            max-width: 90vw;
+        }
+        .lightbox-content img {
+            max-height: 100%;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(var(--project-color-rgb), 0.4);
+            border: 1px solid rgba(var(--project-color-rgb), 0.2);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        .lightbox-close:hover {
+            color: var(--project-color);
+        }
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 10000;
+        }
+        .lightbox-btn:hover {
+            background: rgba(var(--project-color-rgb), 0.3);
+            border-color: var(--project-color);
+            color: var(--project-color);
+        }
+        .lightbox-prev { left: 30px; }
+        .lightbox-next { right: 30px; }
+        .lightbox-counter {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ccc;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-btn lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Project Image">
+        </div>
+        <button class="lightbox-btn lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+    </div>
+
+    <script src="js/data.js?v=1"></script>
+    <script src="js/project.js?v=2"></script>
+</body>
+</html>
