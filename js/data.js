@@ -20,7 +20,7 @@ const neonColors = ["#39ff14", "#7000ff", "#00f7ff", "#ff00ff", "#ffff00", "#ff4
 const projects = [
     {
     id: 1,
-    title: "EduTech (En desarrollo)",
+    title: "Edu-Tech (En desarrollo)",
     theme: "web",
     category: "Plataforma Educativa",
     desc: "Plataforma educativa integral para la gestión y seguimiento académico.",
