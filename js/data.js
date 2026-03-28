@@ -24,7 +24,7 @@ const projects = [
     theme: "web",
     category: "Plataforma Educativa",
     desc: "Plataforma educativa integral para la gestión y seguimiento académico.",
-    longDesc: "EduTech es una plataforma web desarrollada para la Escuela Técnica N° 29 DE 6, orientada a centralizar y optimizar la interacción entre docentes, alumnos y familias. Integra herramientas clave como gestión de clases, seguimiento académico, comunicación y métricas de rendimiento en una única interfaz moderna y accesible.\n\nEl sistema busca reducir la fragmentación de herramientas y mejorar la eficiencia en la gestión educativa, ofreciendo una experiencia intuitiva y adaptada a la dinámica institucional. Está diseñado con una arquitectura escalable que permite incorporar nuevas funcionalidades a futuro.",
+    longDesc: "Edu-Tech es una plataforma web creada para la Escuela Técnica N° 29 DE 6 que centraliza la interacción entre docentes, alumnos y familias. Integra gestión de clases, seguimiento académico, comunicación y métricas en una sola interfaz simple y accesible. Su objetivo es reducir la dispersión de herramientas y mejorar la gestión educativa, con una arquitectura escalable que permite sumar nuevas funcionalidades a futuro.",
     problem: "La falta de un sistema centralizado dificultaba el seguimiento académico y la comunicación entre docentes, alumnos y familias.",
     solution: "Se está desarrollando una plataforma unificada que simplifica la gestión educativa, mejora la comunicación y permite un seguimiento académico en tiempo real.",
     duration: "8 meses",
