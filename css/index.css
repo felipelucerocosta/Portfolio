@@ -17,6 +17,7 @@
     --nav-height: 70px;
     --font-heading: 'Permanent Marker', cursive;
     --font-body: 'Outfit', sans-serif;
+    --font-ui: 'Inter', sans-serif;
 }
 
 * {
@@ -115,8 +116,9 @@ body.modal-active .navbar {
 .nav-links a {
     text-decoration: none;
     color: var(--text-main);
-    font-weight: 700;
-    font-size: 0.8rem;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.85rem;
     text-transform: uppercase;
     transition: var(--transition);
     padding: 4px 8px;
@@ -308,8 +310,8 @@ body.modal-active .navbar {
     border-radius: 12px;
     transition: var(--transition);
     cursor: pointer;
-    font-family: var(--font-heading);
-    letter-spacing: 1px;
+    font-family: var(--font-ui);
+    letter-spacing: 0.5px;
 }
 
 .btn-primary {
@@ -545,13 +547,14 @@ body.modal-active .navbar {
     color: var(--text-main);
     padding: 0.7rem 1.8rem;
     border-radius: 50px;
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .filter-btn:hover {
@@ -905,9 +908,9 @@ body.modal-active .navbar {
 
 .project-action {
     color: var(--project-color);
-    font-family: var(--font-heading);
+    font-family: var(--font-ui);
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 800;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -1044,8 +1047,8 @@ body.modal-active .navbar {
     padding: 0 4px;
     text-align: center;
     font-size: 0.75rem;
-    font-weight: 800;
-    font-family: var(--font-heading);
+    font-weight: 700;
+    font-family: var(--font-ui);
     color: var(--text-main);
     transition: max-height 0.8s ease, opacity 0.5s ease, margin-top 0.5s ease, transform 0.5s ease;
     opacity: 0;
@@ -1557,8 +1560,8 @@ body.modal-active .navbar {
     border-radius: 16px;
     text-align: center;
     text-decoration: none;
-    font-weight: 800;
-    font-family: var(--font-heading);
+    font-weight: 700;
+    font-family: var(--font-ui);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     align-items: center;
@@ -1754,7 +1757,7 @@ body.modal-active .navbar {
 }
 
 .timeline-date {
-    font-family: var(--font-heading);
+    font-family: var(--font-ui);
     display: inline-block;
     color: var(--primary);
     font-weight: 700;
@@ -2041,8 +2044,8 @@ body.modal-active .navbar {
 .footer-nav a {
     text-decoration: none;
     color: #fff;
-    font-weight: 700;
-    font-family: var(--font-heading);
+    font-weight: 600;
+    font-family: var(--font-ui);
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2128,7 +2131,7 @@ body.modal-active .navbar {
 
     .nav-links a {
         font-size: 2rem;
-        font-family: var(--font-heading);
+        font-family: var(--font-ui);
     }
 
     .nav-cta {
