@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="css/index.css?v=2">
+    <style>
+        .modal-tags, .modal-tags span, .tag-premium-modern, .btn-modal {
+            font-family: 'Inter', sans-serif !important;
+        }
+    </style>
 </head>
 
 <body class="dark-theme">
@@ -233,9 +238,9 @@ Además, utilizo la IA como una herramienta para optimizar tiempos, cubrir mis f
                     <div class="sidebar-block">
                         <h4>Links del Proyecto</h4>
                         <div class="modal-actions-sidebar">
-                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank"><i class="fab fa-github"></i> Ver Código</a>
-                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
-                            <a href="#" class="btn-modal btn-primary btn-cyber" id="modal-process" style="margin-top: 1rem; width: 100%;"><i class="fas fa-terminal"></i> Ver Proceso</a>
+                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank" style="font-family: 'Inter', sans-serif;"><i class="fab fa-github"></i> Ver Código</a>
+                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank" style="font-family: 'Inter', sans-serif;"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="btn-modal btn-primary btn-cyber" id="modal-process" style="margin-top: 1rem; width: 100%; font-family: 'Inter', sans-serif;"><i class="fas fa-terminal"></i> Ver Proceso</a>
                         </div>
                     </div>
                 </aside>
@@ -244,7 +249,7 @@ Además, utilizo la IA como una herramienta para optimizar tiempos, cubrir mis f
     </div>
 
 
-    <footer class="footer-terminal">
+    <footer class="footer-terminal" onclick="if(!event.target.closest('a')) window.location.href='#projects'" style="cursor: pointer;" title="Ir a Proyectos">
         <canvas id="matrix-canvas-footer" class="matrix-canvas"></canvas>
         <div class="footer-terminal-content">
             <div class="terminal-header">
@@ -252,23 +257,29 @@ Además, utilizo la IA como una herramienta para optimizar tiempos, cubrir mis f
                 <div class="terminal-dot td-yellow"></div>
                 <div class="terminal-dot td-green"></div>
             </div>
+            
             <div class="terminal-line">
                 <span class="term-prompt">root@felipe-costa/home:~$</span>
-                <span class="term-command">./status --current</span>
+                <span class="term-command">echo "gracias por darme bola" && ./view --projects</span>
             </div>
             <div class="terminal-line" style="color: #27c93f;">
-                > System operational. All modules loaded successfully.
+                > gracias por darme bola
             </div>
-            <div class="terminal-line">
+            <div class="terminal-line" style="color: #00ffcc; font-weight: bold; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                > System operational. [ Haz clic en la terminal para volver a Proyectos ] <i class="fas fa-level-up-alt fa-flip-horizontal" style="animation: pulse 2s infinite;"></i>
+            </div>
+
+            <div class="terminal-line" style="margin-top: 1rem;">
                 <span class="term-prompt">root@felipe-costa/home:~$</span>
                 <span class="term-command">./hire.sh --network</span>
             </div>
-            <div class="terminal-links">
-                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:felipelucero534@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            
+            <div class="terminal-links" style="justify-content: flex-start; margin-top: 0.5rem;">
+                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn" onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:felipelucero534@gmail.com" title="Email" onclick="event.stopPropagation();"><i class="fas fa-envelope"></i></a>
             </div>
-            <span class="terminal-copyright">&copy; 2026 Felipe Costa. Root Access Granted.</span>
+            <span class="terminal-copyright" style="display: block; text-align: right; margin-top: -1rem; margin-right: 1.5rem;">&copy; 2026 Felipe Costa. Root Access Granted.</span>
         </div>
     </footer>
     <script>

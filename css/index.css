@@ -2572,3 +2572,46 @@ body.modal-active .navbar-floating {
     font-size: 0.8rem;
     text-align: center;
 }
+
+/* --- Skill Levels Hover Badges --- */
+.skill-item {
+    position: relative;
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid transparent;
+    cursor: default;
+}
+
+.skill-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transform: translateX(8px);
+}
+
+.skill-level-badge {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) translateX(25px);
+    opacity: 0;
+    pointer-events: none;
+    font-size: 0.7rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(5, 2, 10, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid transparent;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skill-item:hover .skill-level-badge {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}

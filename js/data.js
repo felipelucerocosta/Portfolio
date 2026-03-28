@@ -31,31 +31,41 @@ const projects = [
     events: ["Feria de Ciencias Escolares 2024", "Exposición Técnica Zonal"],
     versions: [
         { 
-            stage: "Mockups Originales", 
-            desc: "Conceptos iniciales bajo el nombre 'Tech-Room 29'. Estructuración del modal de creación de clases y esquema base.", 
-            images: ["captura crear clase.png"] 
+            stage: "Primer Diseño (Wireframing & UI Inicial)", 
+            desc: "Exploración conceptual y esquematización de la interfaz. Definición de la arquitectura de la información para el login, gestión de clases y prototipado del calendario interactivo.", 
+            images: ["Diseño preeliminar Login mockup.PNG", "Diseño preeliminar clases.PNG", "Diseño pre eliminar calendario.PNG"] 
         },
         { 
-            stage: "Primer Entregable", 
-            desc: "Primera versión funcional de Tech-Room. Implementación del login y de un asistente virtual interactivo básico (Alfred).", 
-            images: ["captura 2.png", "captura3.png"] 
+            stage: "Desarrollo del MVP y Pruebas Base", 
+            desc: "Implementación del Minimum Viable Product (MVP). Despliegue de funcionalidades core, integración de foros de discusión interactivos y calibración del asistente virtual.", 
+            images: ["captura 2.png", "captura3.png", "foro.png"] 
         },
         { 
-            stage: "Segundo Diseño", 
-            desc: "Transición a la marca oficial Edu-Tech. Incorporación de foros de discusión y un calendario escolar interactivo para seguimiento.", 
-            images: ["calendario.png", "foro.png"] 
-        },
-        { 
-            stage: "Segundo Entregable", 
-            desc: "Interfaz moderna premium Global definitiva. Reestructuración de la pantalla de inicio y un Dashboard interactivo más completo para la gestión.", 
-            images: ["Captura login.png", "dashboard.png", "captura clases.png"] 
+            stage: "Diseño Nuevo (Final Release)", 
+            desc: "Despliegue de la versión estable con un renovado Design System. Reingeniería premium del dashboard administrativo, jerarquización visual y optimización integral de la experiencia de usuario (UX).", 
+            images: ["Diseño actual login.PNG", "Diseño actual foro.PNG", "Diseño clases actual.PNG", "dashboard.png"] 
         }
     ],
     complications: [
         { 
-            stage: "Diseño de base de datos", 
-            desc: "La estructura inicial no soportaba múltiples usuarios concurrentes de forma eficiente.", 
-            solution: "Se rediseñó el modelo de datos en PostgreSQL, normalizando tablas y optimizando consultas para mejorar el rendimiento." 
+            stage: "Arquitectura de Base de Datos", 
+            desc: "La estructura relacional inicial generaba cuellos de botella y no soportaba múltiples usuarios concurrentes de forma eficiente.", 
+            solution: "Se rediseñó el modelo de datos en PostgreSQL aplicando técnicas de normalización avanzada y creando índices estratégicos para optimizar drásticamente los tiempos de lectura." 
+        },
+        { 
+            stage: "Latencia en Comunicación (WebSockets)", 
+            desc: "El sistema de foros y actualizaciones dependía de peticiones HTTP estándar (polling), lo cual saturaba el servidor y producía latencias altas.", 
+            solution: "Se migró la capa de mensajería a una arquitectura asíncrona mediante WebSockets, permitiendo actualizaciones de la interfaz en tiempo real y reduciendo la carga del servidor en un 60%." 
+        },
+        { 
+            stage: "Seguridad y Gestión de Sesiones", 
+            desc: "El almacenamiento inicial de tokens en localStorage exponía riesgos de vulnerabilidad ante posibles inyecciones XSS.", 
+            solution: "Se implementó una política de autenticación robusta utilizando JWT almacenados en cookies 'HttpOnly' y 'SameSite', blindando el sistema contra exfiltraciones." 
+        },
+        { 
+            stage: "Responsive Design y UX Móvil", 
+            desc: "Módulos complejos como el calendario y el dashboard presentaban problemas de maquetación en resoluciones móviles y tablets.", 
+            solution: "Se refactorizó el frontend con un enfoque 'Mobile-First' y CSS Grid dinámico, asegurando una adaptabilidad total sin perder funcionalidades ni comprometer el rendimiento visual." 
         }
     ],
     icon: "fas fa-user-graduate",
@@ -69,7 +79,7 @@ const projects = [
         "Chatbot con asistencia inteligente",
         "Sistema de gamificación con ranking de alumnos"
     ],
-    images: ["./dashboard.png", "./calendario.png", "./foro.png", "./captura clases.png", "./captura crear clase.png"],
+    images: ["./Diseño actual login.PNG", "./Diseño actual foro.PNG", "./Diseño clases actual.PNG", "./dashboard.png", "./Diseño pre eliminar calendario.PNG"],
     repo: "https://github.com/felipelucerocosta/EduTech1",
     demo: "#"
 },
@@ -423,25 +433,28 @@ const education = [
 
 const skillsData = {
     frontend: [
-        { name: "HTML y CSS", icon: "fab fa-html5" },
-        { name: "Javascript", icon: "fab fa-js" },
-        { name: "ReactJs", icon: "fab fa-react" },
-        { name: "Typescript", icon: "devicon-typescript-plain" },
-        { name: "CustomTkinter", icon: "fas fa-window-maximize" }
+        { name: "HTML y CSS", icon: "fab fa-html5", level: "Avanzado" },
+        { name: "Javascript", icon: "fab fa-js", level: "Intermedio" },
+        { name: "ReactJs", icon: "fab fa-react", level: "Intermedio" },
+        { name: "Typescript", icon: "devicon-typescript-plain", level: "Básico" },
+        { name: "CustomTkinter", icon: "fas fa-window-maximize", level: "Intermedio" }
     ],
     backend: [
-        { name: "NodeJS", icon: "fab fa-node-js" },
-        { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
-        { name: "Python", icon: "fab fa-python" },
-        { name: "SQLite", icon: "fas fa-database" }
+        { name: "NodeJS", icon: "fab fa-node-js", level: "Intermedio" },
+        { name: "PostgreSQL", icon: "devicon-postgresql-plain", level: "Intermedio" },
+        { name: "Python", icon: "fab fa-python", level: "Avanzado" },
+        { name: "SQLite", icon: "fas fa-database", level: "Intermedio" },
+        { name: "PHP", icon: "fab fa-php", level: "Intermedio" },
+        { name: "Laravel", icon: "fab fa-laravel", level: "Básico" },
+        { name: "Java", icon: "fab fa-java", level: "Básico" }
     ],
     tools: [
-        { name: "Diagramas con Lucidchart", icon: "lucidchart", isSvg: true },
-        { name: "Gantt", icon: "gantt", isSvg: true },
-        { name: "Cisco Packet Tracer", icon: "packettracer", isSvg: true },
-        { name: "GitHub", icon: "fab fa-github" },
-        { name: "Docker", icon: "fab fa-docker" },
-        { name: "Inglés Medio", icon: "fas fa-language" }
+        { name: "Diagramas con Lucidchart", icon: "lucidchart", isSvg: true, level: "Avanzado" },
+        { name: "Gantt", icon: "gantt", isSvg: true, level: "Intermedio" },
+        { name: "Cisco Packet Tracer", icon: "packettracer", isSvg: true, level: "Intermedio" },
+        { name: "GitHub", icon: "fab fa-github", level: "Intermedio" },
+        { name: "Docker", icon: "fab fa-docker", level: "Básico" },
+        { name: "Inglés Medio", icon: "fas fa-language", level: "Intermedio" }
     ],
     blandas: [
         { name: "Responsabilidad", icon: "fas fa-clipboard-check" },

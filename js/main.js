@@ -329,6 +329,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         ? `<img src="${skill.icon}" alt="${skill.name}" class="skill-icon-img"><span class="skill-name">${skill.name}</span>`
                         : `<i class="${skill.icon}"></i><span class="skill-name">${skill.name}</span>`;
                 }
+                
+                if (skill.level) {
+                    let levelColor = '#00f7ff'; 
+                    if (skill.level === 'Básico') levelColor = '#ffbd2e';
+                    if (skill.level === 'Avanzado') levelColor = '#39ff14';
+                    
+                    div.innerHTML += `<span class="skill-level-badge" style="border-color: ${levelColor}; color: ${levelColor}; box-shadow: inset 0 0 8px ${levelColor}33, 0 0 8px ${levelColor}22;">${skill.level}</span>`;
+                }
+                
                 container.appendChild(div);
             });
         }
