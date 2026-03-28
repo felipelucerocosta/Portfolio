@@ -190,6 +190,7 @@ body.modal-active .navbar {
     z-index: 10;
     max-width: 1200px;
     width: 100%;
+    transform: translateX(6vw); /* Desplazamiento garantizado hacia la derecha en pantallas grandes */
 }
 
 .badge-junior {
