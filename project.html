@@ -14,64 +14,280 @@
     <link rel="stylesheet" href="css/index.css?v=2">
     <style>
         .project-details-hero {
-            padding: 12rem 0 3rem 0;
-            text-align: center;
+            padding: 10rem 0 2rem 0;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 2rem;
         }
-        .project-content-grid {
-            display: block;
-            margin-top: 2rem;
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
             margin-bottom: 5rem;
         }
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         .glass-panel {
-            background: rgba(11, 1, 21, 0.7);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(var(--project-color-rgb), 0.3);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(var(--project-color-rgb), 0.1);
+            background: rgba(3, 1, 8, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(var(--project-color-rgb), 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 0 10px rgba(var(--project-color-rgb), 0.05);
             position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .glass-panel:hover {
-            border-color: rgba(var(--project-color-rgb), 0.6);
-            box-shadow: 0 10px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(var(--project-color-rgb), 0.2);
+            border-color: rgba(var(--project-color-rgb), 0.4);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(var(--project-color-rgb), 0.1);
         }
-        .gallery-preview img {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.4s ease;
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(var(--project-color-rgb), 0.5), transparent);
+            opacity: 0.5;
         }
-        .gallery-preview img:hover {
-            transform: scale(1.02);
-            border-color: rgba(var(--project-color-rgb), 0.5);
-        }
+        
         #project-title {
+            color: #fff;
+            text-shadow: 0 0 20px rgba(var(--project-color-rgb), 0.4);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            font-family: var(--font-heading);
+        }
+        #project-category {
             color: var(--project-color);
-            text-shadow: 0 0 15px rgba(var(--project-color-rgb), 0.6);
+            font-family: var(--font-mono, 'JetBrains Mono', monospace);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
         }
         .section-header-mini {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             font-family: var(--font-heading);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #fff;
             margin-bottom: 1.5rem;
         }
         .section-header-mini i {
             color: var(--project-color);
+            font-size: 1.2rem;
+            filter: drop-shadow(0 0 8px rgba(var(--project-color-rgb), 0.6));
+        }
+
+        /* Bento Cards specific */
+        .bento-main { grid-column: 1 / 2; }
+        .bento-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+        .bento-wide { grid-column: 1 / -1; }
+
+        .tag-premium-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(var(--project-color-rgb), 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #fff;
+            font-family: var(--font-mono, 'JetBrains Mono', monospace);
+            transition: all 0.3s ease;
+        }
+        .tag-premium-modern:hover {
+            background: rgba(var(--project-color-rgb), 0.1);
+            border-color: var(--project-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--project-color-rgb), 0.2);
+        }
+
+        .btn-console {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(var(--project-color-rgb), 0.4);
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--font-mono, 'JetBrains Mono', monospace);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-console::before {
+            content: '>';
+            color: var(--project-color);
+            font-weight: bold;
+        }
+        .btn-console:hover {
+            background: rgba(var(--project-color-rgb), 0.15);
+            border-color: var(--project-color);
+            box-shadow: 0 0 20px rgba(var(--project-color-rgb), 0.3);
+            color: var(--project-color);
+        }
+        
+        /* Timeline sleek styling */
+        .horizontal-timeline {
+            display: flex;
+            overflow-x: auto;
+            padding: 1.5rem 0.5rem 2rem 0.5rem;
+            gap: 3rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(var(--project-color-rgb), 0.5) transparent;
+        }
+        .horizontal-timeline-item {
+            flex: 0 0 320px;
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .horizontal-timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -3rem;
+            width: 3rem;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(var(--project-color-rgb), 0.8), transparent);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .horizontal-timeline-item:hover {
+            border-color: rgba(var(--project-color-rgb), 0.3);
+            background: rgba(var(--project-color-rgb), 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .horizontal-timeline-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .horizontal-timeline-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--project-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--project-color);
+        }
+        
+        .horizontal-timeline-desc {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .feature-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .feature-icon {
+            color: var(--project-color);
+            background: rgba(var(--project-color-rgb), 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .meta-stat {
+            background: rgba(0,0,0,0.4);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+            margin-bottom: 1rem;
+        }
+        .meta-stat h4 {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .meta-stat h4 i {
+            color: var(--project-color);
+        }
+        .meta-stat p {
+            color: #fff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .gallery-images-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: auto;
+        }
+        .gallery-images-grid img {
+            height: 100px;
+            width: auto;
+            min-width: 140px;
+            flex: 1 1 auto;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .gallery-images-grid img:hover {
+            transform: scale(1.05) translateY(-5px);
+            border-color: rgba(var(--project-color-rgb), 0.6);
+            box-shadow: 0 10px 25px rgba(var(--project-color-rgb), 0.3);
         }
     </style>
 </head>
 <body class="dark-theme">
     <div class="binary-bg"></div>
     <div class="grid-overlay"></div>
-    <canvas id="network-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity:0.3;"></canvas>
+    <canvas id="network-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity:0.1;"></canvas>
     
-    <header class="navbar">
+    <header class="navbar-floating">
         <nav class="container">
             <div class="logo">FELIPE <span>COSTA</span></div>
             <ul class="nav-links">
@@ -82,208 +298,62 @@
 
     <main class="container" id="project-main" style="display:none; position: relative; z-index: 10;">
         <section class="project-details-hero">
-            <h3 id="project-category" class="about-subtitle" style="color: var(--text-dim); letter-spacing: 2px;">Categoría</h3>
-            <h1 id="project-title" class="section-title" style="font-size: 3.5rem; margin-top: 1rem;">Cargando...</h1>
+            <h3 id="project-category">Categoría</h3>
+            <h1 id="project-title">Cargando...</h1>
         </section>
 
-        <div class="project-content-grid">
-            <div class="project-main-info glass-panel">
-                <!-- Header and Inline Tags Area -->
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                    <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-                        <h2 class="section-header-mini" style="margin: 0;"><i class="fas fa-cogs"></i> Descripción General</h2>
-                        <div id="project-tags-inline" style="display: flex; align-items: center; gap: 1rem;"></div>
+        <div class="bento-grid">
+            
+            <!-- Descripcion Principal -->
+            <div class="bento-main glass-panel">
+                <h2 class="section-header-mini"><i class="fas fa-terminal"></i> Resumen del Proyecto</h2>
+                <p id="project-longDesc" class="about-text" style="font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-top: 1rem;"></p>
+                
+                <h2 class="section-header-mini" style="margin-top: 3rem;"><i class="fas fa-code-branch"></i> Funcionalidades Clave</h2>
+                <div id="project-features-main" style="margin-top: 1.5rem; display: flex; flex-direction: column; color: #ccc;">
+                    <!-- Features injected here -->
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="bento-sidebar">
+                
+                <div class="glass-panel">
+                    <h2 class="section-header-mini"><i class="fas fa-layer-group"></i> Stack</h2>
+                    <div id="project-tags-inline" style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem;">
+                        <!-- Tags injected here -->
                     </div>
-                    <div id="project-links-inline" style="display: flex; gap: 1.2rem; align-items: center;"></div>
                 </div>
 
-                <p id="project-longDesc" class="about-text" style="font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-top: 1.5rem;"></p>
-                
-                <h2 class="section-header-mini" style="margin-top: 3rem;"><i class="fas fa-star"></i> Funcionalidades Destacadas</h2>
-                <ul id="project-features-main" class="about-text" style="margin-top: 1.5rem; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 1rem; color: #ccc;"></ul>
-                
-                <div id="project-meta-details" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 3rem; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                    <div>
-                        <h4 style="color: var(--project-color); margin-bottom: 0.5rem; font-family: var(--font-heading);"><i class="fas fa-bullseye"></i> Problemática y Objetivos</h4>
-                        <p id="project-problem" class="about-text" style="font-size: 0.95rem;">-</p>
+                <div class="glass-panel">
+                    <h2 class="section-header-mini"><i class="fas fa-link"></i> Accesos</h2>
+                    <div id="project-links-inline" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <!-- Links injected here -->
                     </div>
-                    <div>
-                        <h4 style="color: var(--project-color); margin-bottom: 0.5rem; font-family: var(--font-heading);"><i class="fas fa-clock"></i> Tiempo de Desarrollo</h4>
-                        <p id="project-duration" class="about-text" style="font-size: 0.95rem;">-</p>
+                </div>
+
+                <div class="glass-panel" style="padding: 1.5rem;">
+                    <div class="meta-stat">
+                        <h4><i class="fas fa-crosshairs"></i> Problematica</h4>
+                        <p id="project-problem">-</p>
+                    </div>
+                    <div class="meta-stat" style="margin-bottom: 0;">
+                        <h4><i class="fas fa-hourglass-half"></i> Tiempo de Desarrollo</h4>
+                        <p id="project-duration">-</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <style>
-            .icon-tooltip {
-                position: relative;
-                font-size: 2rem;
-                transition: all 0.3s ease;
-                cursor: pointer;
-                text-decoration: none;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .icon-tooltip.fas, .icon-tooltip.fab {
-                color: #fff; /* Enlaces y genéricos en blanco */
-            }
-            .icon-tooltip:hover {
-                transform: scale(1.15);
-                filter: drop-shadow(0 0 8px rgba(var(--project-color-rgb), 0.5));
-            }
-            .icon-tooltip::after {
-                content: attr(data-tooltip);
-                position: absolute;
-                bottom: -35px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(0,0,0,0.9);
-                color: #fff;
-                padding: 0.4rem 0.8rem;
-                border-radius: 6px;
-                font-size: 0.85rem;
-                white-space: nowrap;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-                font-family: var(--font-main);
-                z-index: 100;
-                font-weight: 600;
-                border: 1px solid rgba(255,255,255,0.1);
-            }
-            .icon-tooltip:hover::after {
-                opacity: 1;
-            }
-        </style>
-
-        <style>
-            .horizontal-timeline {
-                display: flex;
-                overflow-x: auto;
-                padding: 1.5rem 0.5rem 3rem 0.5rem;
-                gap: 5rem; /* Espacio extra para las flechas desarrolladas */
-                margin-top: 1rem;
-                scrollbar-width: thin;
-                scrollbar-color: var(--project-color) transparent;
-            }
-            .horizontal-timeline::-webkit-scrollbar {
-                height: 8px;
-            }
-            .horizontal-timeline::-webkit-scrollbar-track {
-                background: rgba(255,255,255,0.05);
-                border-radius: 4px;
-            }
-            .horizontal-timeline::-webkit-scrollbar-thumb {
-                background: var(--project-color);
-                border-radius: 4px;
-            }
-            .horizontal-timeline-item {
-                flex: 0 0 360px;
-                position: relative;
-                background: rgba(255,255,255,0.02);
-                border: 1px solid rgba(255,255,255,0.05);
-                border-radius: 16px;
-                padding: 1.5rem;
-                transition: all 0.3s ease;
-                display: flex;
-                flex-direction: column;
-            }
-            /* Línea conectora brillante - Morado Neon */
-            .horizontal-timeline-item:not(:last-child)::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                right: -5rem;
-                width: 5rem;
-                height: 5px; /* Más robusta */
-                background: linear-gradient(90deg, rgba(176, 38, 255, 0.9), rgba(176, 38, 255, 0.1));
-                transform: translateY(-50%);
-                box-shadow: 0 0 15px rgba(176, 38, 255, 0.6);
-                cursor: default;
-                pointer-events: none;
-                z-index: 0;
-            }
-            /* Flecha doble animada sobre la línea - Morado Neon */
-            .horizontal-timeline-item:not(:last-child)::before {
-                content: '\f101'; /* Angle Double Right FontAwesome */
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                position: absolute;
-                top: 50%;
-                right: -2.5rem; /* Centrado geográfico exacto en el gap de 5rem */
-                color: #b026ff; /* Morado neon vivo */
-                font-size: 2.5rem; /* Tamaño adecuado */
-                text-shadow: 0 0 20px rgba(176, 38, 255, 0.9);
-                z-index: 1;
-                pointer-events: none;
-                animation: flowArrowPurple 2s infinite ease-in-out;
-                filter: drop-shadow(0 0 5px rgba(176, 38, 255, 0.8));
-            }
-            
-            @keyframes flowArrowPurple {
-                0% { transform: translate(50%, -50%) translateX(-12px); opacity: 0.5; filter: drop-shadow(0 0 2px rgba(176, 38, 255, 0)); }
-                50% { transform: translate(50%, -50%) translateX(12px); opacity: 1; text-shadow: 0 0 30px rgba(176, 38, 255, 1); filter: drop-shadow(0 0 15px rgba(176, 38, 255, 1)); }
-                100% { transform: translate(50%, -50%) translateX(-12px); opacity: 0.5; filter: drop-shadow(0 0 2px rgba(176, 38, 255, 0)); }
-            }
-
-            .horizontal-timeline-item:hover {
-                border-color: rgba(var(--project-color-rgb), 0.4);
-                background: rgba(var(--project-color-rgb), 0.08);
-                transform: translateY(-5px);
-                box-shadow: 0 12px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(var(--project-color-rgb), 0.1);
-            }
-            .horizontal-timeline-title {
-                font-family: var(--font-heading);
-                font-size: 1.3rem;
-                color: #fff;
-                margin-bottom: 0.5rem;
-                margin-top: 0;
-            }
-            .horizontal-timeline-desc {
-                color: #aaa;
-                margin-bottom: 1.5rem;
-                font-size: 0.95rem;
-                line-height: 1.6;
-                flex-grow: 1;
-            }
-            .gallery-images-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.8rem;
-                margin-top: auto;
-            }
-            .gallery-images-grid img {
-                height: 100px;
-                width: auto;
-                min-width: 140px;
-                flex: 1 1 auto;
-                object-fit: cover;
-                border-radius: 8px;
-                border: 1px solid rgba(255,255,255,0.1);
-                transition: all 0.3s ease;
-                cursor: pointer;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            }
-            .gallery-images-grid img:hover {
-                transform: scale(1.05) translateY(-5px);
-                border-color: rgba(var(--project-color-rgb), 0.6);
-                box-shadow: 0 10px 25px rgba(var(--project-color-rgb), 0.3);
-            }
-        </style>
-
-        <!-- Secciones Aparte: Líneas de tiempo transversales -->
-        <div class="project-horizontal-sections" style="margin-bottom: 5rem;">
-            <div class="glass-panel" style="margin-bottom: 3rem;">
-                <h2 class="section-header-mini"><i class="fas fa-boxes"></i> Versiones y Entregables</h2>
+            <!-- Versiones horizontales -->
+            <div class="bento-wide glass-panel">
+                <h2 class="section-header-mini"><i class="fas fa-history"></i> Flujo de Desarrollo del proyecto</h2>
                 <div class="horizontal-timeline" id="project-versions-timeline">
                     <!-- Populated by JS -->
                 </div>
             </div>
 
-            <div class="glass-panel">
-                <h2 class="section-header-mini"><i class="fas fa-wrench"></i> Complicaciones y Soluciones</h2>
+            <div class="bento-wide glass-panel">
+                <h2 class="section-header-mini"><i class="fas fa-shield-alt"></i> Situaciones y Soluciones</h2>
                 <div class="horizontal-timeline" id="project-complications-timeline">
                     <!-- Populated by JS -->
                 </div>
@@ -291,13 +361,74 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <p>&copy; 2026 Felipe Costa. Elaborado con pasión.</p>
+    <footer class="footer-terminal">
+        <canvas id="matrix-canvas-footer" class="matrix-canvas"></canvas>
+        <div class="footer-terminal-content">
+            <div class="terminal-header">
+                <div class="terminal-dot td-red"></div>
+                <div class="terminal-dot td-yellow"></div>
+                <div class="terminal-dot td-green"></div>
             </div>
+            <div class="terminal-line">
+                <span class="term-prompt">root@felipe-costa/portfolio:~$</span>
+                <span class="term-command">./status --current</span>
+            </div>
+            <div class="terminal-line" style="color: #27c93f;">
+                > System operational. Design mode: Hacker Premium.
+            </div>
+            <div class="terminal-line">
+                <span class="term-prompt">root@felipe-costa/portfolio:~$</span>
+                <span class="term-command">./connect --network</span>
+            </div>
+            <div class="terminal-links">
+                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:felipelucero534@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <span class="terminal-copyright">&copy; 2026 Felipe Costa. Root Access Granted.</span>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('matrix-canvas-footer');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+            const fontSize = 14;
+            let columns = canvas.width / fontSize;
+            let drops = Array.from({length: columns}).fill(1);
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(2, 1, 4, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#0f0';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            setInterval(draw, 33);
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+                columns = canvas.width / fontSize;
+                drops = Array.from({length: columns}).fill(1);
+            });
+        });
+    </script>
 
     <style>
         /* Lightbox Modal Globals */

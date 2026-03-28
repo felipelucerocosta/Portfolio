@@ -2404,3 +2404,171 @@ body.modal-active .navbar {
         opacity: 0;
     }
 }
+
+/* --- Floating Glass Header --- */
+.navbar-floating {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1200px;
+    height: 60px;
+    z-index: 1000;
+    background: rgba(10, 5, 20, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 247, 255, 0.3);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(0, 247, 255, 0.1);
+}
+body.modal-active .navbar-floating {
+    top: -100px;
+    opacity: 0;
+}
+.navbar-floating .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+@media (max-width: 900px) {
+    .navbar-floating {
+        top: 10px;
+        width: 95%;
+        border-radius: 20px;
+    }
+}
+.navbar-floating .nav-links a {
+    text-decoration: none;
+    color: #ccc;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+    font-weight: 400;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+.navbar-floating .nav-links a.active::after {
+    content: none;
+}
+.navbar-floating .nav-links a:hover,
+.navbar-floating .nav-links a.active {
+    color: var(--primary);
+    border-color: rgba(57, 255, 20, 0.5);
+    background: rgba(57, 255, 20, 0.05);
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+    transform: none;
+}
+
+@media (max-width: 1200px) {
+    .navbar-floating .nav-links a {
+        font-size: 2rem;
+        padding: 15px 30px;
+        border: none;
+    }
+    .navbar-floating .nav-links a:hover,
+    .navbar-floating .nav-links a.active {
+        background: transparent;
+        box-shadow: none;
+        border-color: transparent;
+        color: var(--primary);
+    }
+}
+
+/* --- Terminal Footer Matrix Rain --- */
+.footer-terminal {
+    position: relative;
+    padding: 6rem 0;
+    background: #020104;
+    border-top: 1px solid rgba(57, 255, 20, 0.2);
+    overflow: hidden;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.15;
+    pointer-events: none;
+}
+.footer-terminal::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, #020104 0%, transparent 20%, transparent 80%, #020104 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+.footer-terminal-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+    background: rgba(2, 1, 4, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 20px rgba(57, 255, 20, 0.05);
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed rgba(57, 255, 20, 0.3);
+}
+.terminal-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+}
+.td-red { background: #ff5f56; }
+.td-yellow { background: #ffbd2e; }
+.td-green { background: #27c93f; }
+
+.terminal-line {
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+.term-prompt { color: var(--primary); font-weight: bold; margin-right: 10px; }
+.term-command { color: #fff; }
+
+.terminal-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.terminal-links a {
+    color: var(--highlight);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+.terminal-links a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+    text-shadow: 0 0 15px var(--primary);
+}
+.terminal-copyright {
+    display: block;
+    margin-top: 3rem;
+    color: #666;
+    font-size: 0.8rem;
+    text-align: center;
+}

@@ -31,14 +31,24 @@ const projects = [
     events: ["Feria de Ciencias Escolares 2024", "Exposición Técnica Zonal"],
     versions: [
         { 
-            stage: "Prototipo inicial", 
-            desc: "Validación de la interfaz y sistema de foros enfocado en la experiencia de usuario.", 
-            images: ["./foro.png", "./captura crear clase.png"] 
+            stage: "Mockups Originales", 
+            desc: "Conceptos iniciales bajo el nombre 'Tech-Room 29'. Estructuración del modal de creación de clases y esquema base.", 
+            images: ["captura crear clase.png"] 
         },
         { 
-            stage: "Versión actual", 
-            desc: "Dashboard interactivo con funcionalidades completas y sistema operativo estable.", 
-            images: ["./dashboard.png", "./calendario.png"] 
+            stage: "Primer Entregable", 
+            desc: "Primera versión funcional de Tech-Room. Implementación del login y de un asistente virtual interactivo básico (Alfred).", 
+            images: ["captura 2.png", "captura3.png"] 
+        },
+        { 
+            stage: "Segundo Diseño", 
+            desc: "Transición a la marca oficial Edu-Tech. Incorporación de foros de discusión y un calendario escolar interactivo para seguimiento.", 
+            images: ["calendario.png", "foro.png"] 
+        },
+        { 
+            stage: "Segundo Entregable", 
+            desc: "Interfaz moderna premium Global definitiva. Reestructuración de la pantalla de inicio y un Dashboard interactivo más completo para la gestión.", 
+            images: ["Captura login.png", "dashboard.png", "captura clases.png"] 
         }
     ],
     complications: [

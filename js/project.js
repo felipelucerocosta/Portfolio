@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tagsContainer = document.getElementById('project-tags-inline');
     if (tagsContainer) {
-        tagsContainer.innerHTML = project.tags.map(t => `<span class="tag-premium"><i class="${tagIcons[t] || 'fas fa-code'}"></i> ${t}</span>`).join('');
+        tagsContainer.innerHTML = project.tags.map(t => `<span class="tag-premium-modern"><i class="${tagIcons[t] || 'fas fa-code'}"></i> ${t}</span>`).join('');
     }
     
     const featuresContainer = document.getElementById('project-features-main');
@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
         featuresContainer.innerHTML = project.features.map(f => {
             const parts = f.split(':');
             if (parts.length > 1) {
-                return `<li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--project-color); margin-right: 8px;"></i> <strong>${parts[0]}:</strong>${parts.slice(1).join(':')}</li>`;
+                return `<div class="feature-item"><i class="fas fa-check feature-icon"></i> <div><strong style="color: #fff;">${parts[0]}:</strong>${parts.slice(1).join(':')}</div></div>`;
             }
-            return `<li><i class="fas fa-check" style="color: var(--project-color); margin-right: 8px;"></i> ${f}</li>`;
+            return `<div class="feature-item"><i class="fas fa-check feature-icon"></i> <div>${f}</div></div>`;
         }).join('');
     }
     
@@ -93,10 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (linksContainer) {
         let linksHTML = '';
         if (project.repo && project.repo !== "#") {
-            linksHTML += `<a href="${project.repo}" target="_blank" class="tag-premium" style="text-decoration: none; cursor: pointer; color: #fff;"><i class="fab fa-github"></i> Ver Código</a>`;
+            linksHTML += `<a href="${project.repo}" target="_blank" class="btn-console"><i class="fab fa-github"></i> Código Fuente</a>`;
         }
         if (project.demo && project.demo !== "#") {
-            linksHTML += `<a href="${project.demo}" target="_blank" class="tag-premium" style="text-decoration: none; cursor: pointer; color: #fff;"><i class="fas fa-external-link-alt" style="color: var(--project-color);"></i> Visitar Proyecto</a>`;
+            linksHTML += `<a href="${project.demo}" target="_blank" class="btn-console"><i class="fas fa-external-link-alt"></i> Aplicación / Demo</a>`;
         }
         linksContainer.innerHTML = linksHTML;
     }
