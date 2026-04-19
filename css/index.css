@@ -95,15 +95,14 @@ body.modal-active .navbar {
     font-family: var(--font-heading);
     font-size: 1.6rem;
     letter-spacing: 1.5px;
-    color: var(--text-main);
-    text-shadow: 2px 2px var(--secondary);
+    color: #ffffff;
+    text-shadow: none;
     margin-right: 15px;
-    ;
 }
 
 .logo span {
-    color: var(--primary);
-    text-shadow: 2px 2px var(--bg-dark);
+    color: #ffffff;
+    text-shadow: none;
 }
 
 .nav-links {
@@ -952,12 +951,11 @@ body.modal-active .navbar {
 
 .skill-category h3 {
     font-family: var(--font-heading);
-    color: var(--primary);
+    color: #ffffff;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    border-bottom: 4px solid var(--accent);
+    border-bottom: 4px solid var(--primary);
     display: inline-block;
-    transform: rotate(-2deg);
 }
 
 .skills-grid {
@@ -967,11 +965,11 @@ body.modal-active .navbar {
 }
 
 .skill-item {
-    background: rgba(11, 1, 21, 0.6);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1.5rem 1rem;
-    border-radius: 16px;
+    border-radius: 12px;
     text-align: center;
     transition: all 0.5s ease-out;
     position: relative;
@@ -986,10 +984,10 @@ body.modal-active .navbar {
 }
 
 .skill-item:hover {
-    background: rgba(11, 1, 21, 0.85);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 10px 25px rgba(112, 0, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
 }
 
 .skill-item i {
@@ -1700,10 +1698,10 @@ body.modal-active .navbar {
     top: 0;
     width: 4px;
     height: 100%;
-    background: var(--secondary);
+    background: var(--primary);
     transform: translateX(-50%);
-    box-shadow: 0 0 15px var(--secondary);
-    opacity: 0.8;
+    box-shadow: 0 0 15px var(--primary);
+    opacity: 0.5;
 }
 
 .timeline-item {
@@ -1775,7 +1773,7 @@ body.modal-active .navbar {
 
 .timeline-org {
     display: block;
-    color: var(--secondary);
+    color: var(--primary);
     font-weight: 800;
     font-style: italic;
     margin-bottom: 1rem;
@@ -1806,10 +1804,10 @@ body.modal-active .navbar {
 
 .timeline-item:hover .timeline-content {
     border-color: var(--primary);
-    background: rgba(112, 0, 255, 0.1);
-    /* Purple tint */
-    box-shadow: 0 0 50px rgba(112, 0, 255, 0.4);
-    /* Neon purple glow */
+    background: rgba(57, 255, 20, 0.05);
+    /* Green tint */
+    box-shadow: 0 0 50px rgba(57, 255, 20, 0.2);
+    /* Neon green glow */
 }
 
 /* Base Hover removed as we'll use JS for a more natural tilt */

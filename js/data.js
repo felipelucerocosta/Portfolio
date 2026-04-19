@@ -110,88 +110,8 @@ const projects = [
     repo: "#",
     demo: "#"
 },
-{
+ {
     id: 3,
-    title: "Jackie",
-    theme: "ia",
-    category: "Business AI",
-    desc: "IA para análisis de mercado, definición de precios y evaluación de factibilidad de proyectos.",
-    longDesc: "Jackie es una herramienta de inteligencia artificial desarrollada en Python, diseñada para analizar mercados, definir estrategias de precios y evaluar la factibilidad de productos o servicios.\n\nPermite procesar información sobre competencia, costos y demanda, generando recomendaciones claras sobre precios, posicionamiento y oportunidades de negocio. Está orientada a emprendedores, desarrolladores y pequeños equipos que necesitan tomar decisiones estratégicas sin depender de estudios complejos.\n\nDentro del crecimiento actual de herramientas de IA aplicadas a negocios, Jackie se posiciona como una solución accesible para validar ideas, analizar mercados y optimizar estrategias antes de lanzar un producto.\n\nSu integración con APIs de modelos de lenguaje permite adaptar el análisis a distintos contextos, haciendo que la herramienta sea flexible y escalable.",
-    
-    problem: "Emprendedores y equipos carecen de herramientas accesibles para analizar mercados, definir precios adecuados y evaluar la viabilidad de sus proyectos, lo que lleva a decisiones poco informadas.",
-    
-    solution: "Jackie automatiza el análisis de mercado, sugiere precios basados en datos y evalúa la factibilidad de proyectos, facilitando la toma de decisiones estratégicas.",
-    
-    duration: "1 mes",
-    
-    events: ["Talento Tech - Proyecto Final"],
-    
-    versions: [
-        { 
-            stage: "Primera versión funcional", 
-            desc: "Implementación inicial en Python con integración a APIs de modelos de lenguaje para análisis de mercado y generación de recomendaciones estratégicas.", 
-            images: ["Captura login.png"] 
-        }
-    ],
-    
-    complications: [],
-    
-    icon: "fas fa-chart-line",
-    color: "#7fff00",
-    
-    tags: ["Python"],
-    
-    features: [
-        "Análisis de mercado automatizado",
-        "Sugerencia de precios basada en contexto",
-        "Evaluación de factibilidad de proyectos",
-        "Análisis de competencia",
-        "Generación de estrategias de posicionamiento",
-        "Explicaciones claras para la toma de decisiones",
-        "Integración con modelos de IA",
-        "Optimización de decisiones de negocio"
-    ],
-    
-    images: ["Captura login.png"],
-    
-    repo: "https://github.com/felipelucerocosta/colossus",
-    demo: ""
-},
- {
-    id: 4,
-    title: "Colossus",
-    theme: "ia",
-    category: "Inteligencia Artificial",
-    desc: "Asistente de IA para análisis, corrección y optimización de código.",
-    longDesc: "Colossus es una herramienta de inteligencia artificial desarrollada en Python, diseñada para asistir a desarrolladores en el análisis, corrección y optimización de código. Permite procesar fragmentos o archivos completos, detectando errores, sugiriendo mejoras y promoviendo buenas prácticas de programación.\n\nEl sistema está orientado tanto al desarrollo profesional como al aprendizaje, proporcionando explicaciones claras y adaptadas al nivel del usuario. Cuenta con integración a APIs de modelos de lenguaje configurables, y está diseñado con una arquitectura escalable para su futura integración en la plataforma EduTech.",
-    problem: "La falta de herramientas accesibles que permitan analizar y mejorar código de forma rápida y clara, sin depender de entornos complejos.",
-    solution: "Se desarrolló una herramienta simple pero potente que automatiza el análisis de código, mejora la calidad del desarrollo y facilita el aprendizaje mediante explicaciones guiadas.",
-    duration: "1 mes",
-    events: ["Talento Tech - Proyecto Final"],
-    versions: [
-        { 
-            stage: "Primera versión funcional", 
-            desc: "Implementación inicial en Python con integración a APIs de modelos de lenguaje para análisis de código en tiempo real.", 
-            images: ["Captura login.png"] 
-        }
-    ],
-    complications: [],
-    icon: "fas fa-fire",
-    color: "#00bfff",
-    tags: ["Python"],
-    features: [
-        "Análisis de código en tiempo real",
-        "Detección de errores y sugerencias de mejora",
-        "Optimización basada en buenas prácticas",
-        "Explicaciones adaptadas al nivel del usuario",
-        "Integración con modelos de IA configurables"
-    ],
-    images: ["Captura login.png"],
-    repo: "https://github.com/felipelucerocosta/colossus",
-    demo: ""
-},
- {
-    id: 4,
     title: "ET 29 - Portal Institucional",
     theme: "web",
     category: "Web Institucional",
@@ -224,7 +144,7 @@ const projects = [
     demo: "https://tecnica29de6.github.io/tecnica29de6.edu.ar/"
 },
  {
-    id: 5,
+    id: 4,
     title: "WikiBots (En desarrollo)",
     theme: "web",
     category: "Plataforma Web Informativa",
@@ -257,7 +177,7 @@ const projects = [
     demo: "https://battlebots11122.netlify.app/"
 },
     {
-    id: 6,
+    id: 5,
     title: "Project Tracker",
     theme: "programas",
     category: "Gestión de Proyectos",
@@ -296,7 +216,7 @@ const projects = [
     demo: "ProjectTracker.exe"
 },
  {
-    id: 7,
+    id: 6,
     title: "Inventario - Reina Bazar",
     theme: "programas",
     category: "Gestión",
@@ -323,7 +243,7 @@ const projects = [
 },
    
     {
-    id: 8,
+    id: 7,
     title: "MagoSaid - Landing Page",
     theme: "web",
     category: "Web & Consulting",
@@ -358,7 +278,7 @@ const projects = [
    
    
    {
-    id: 9,
+    id: 8,
     title: "E-commerce de Reina Bazar",
     theme: "web",
     category: "E-commerce",
@@ -400,16 +320,16 @@ const education = [
         desc: "Enfoque en la reparacion de computadoras."
     },
     {
+        date: "Abril 2026 - Actualidad",
+        title: "Desarrollo de proyectos con IA",
+        org: "Generación T",
+        desc: "Enfoque en el desarrollo de aplicaciones y sistemas integrando herramientas de Inteligencia Artificial."
+    },
+    {
         date: "Marzo 2026",
         title: "Workshop de Portfolio Estratégico",
         org: "Puerta 18",
         desc: "Enfoque en la creación de un portfolio profesional y atractivo para los reclutadores."
-    },
-    {
-        date: "Marzo 2026",
-        title: "Taller de Creación de agente de inteligencia artificial",
-        org: "Puerta 18",
-        desc: "Enfoque en la creación de agentes de inteligencia artificial."
     },
     {
         date: "Febrero 2026",
@@ -442,9 +362,9 @@ const skillsData = {
     backend: [
         { name: "NodeJS", icon: "fab fa-node-js", level: "Intermedio" },
         { name: "PostgreSQL", icon: "devicon-postgresql-plain", level: "Intermedio" },
-        { name: "Python", icon: "fab fa-python", level: "Avanzado" },
-        { name: "SQLite", icon: "fas fa-database", level: "Intermedio" },
-        { name: "PHP", icon: "fab fa-php", level: "Intermedio" },
+        { name: "Python", icon: "fab fa-python", level: "Básico" },
+        { name: "SQLite", icon: "fas fa-database", level: "Básico" },
+        { name: "PHP", icon: "fab fa-php", level: "Básico" },
         { name: "Laravel", icon: "fab fa-laravel", level: "Básico" },
         { name: "Java", icon: "fab fa-java", level: "Básico" }
     ],

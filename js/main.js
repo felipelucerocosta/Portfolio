@@ -12,7 +12,7 @@ let animationId = null;
 
 // Typewriter Logic
 const typewriterElement = document.getElementById('typewriter');
-const phrases = ["Futuro Digital.", "Código Escalable.", "Soluciones Full Stack.", "Experiencias Únicas."];
+const phrases = ["Futuro Digital.", "Código Escalable.", "Desarrollo Frontend.", "Experiencias Únicas."];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
