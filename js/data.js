@@ -308,46 +308,58 @@ const projects = [
 
 const education = [
     {
-        date: "Febrero 2021 - Actualidad ",
+        date: "Febrero 2021 - Actualidad",
         title: "Secundario Técnico con especialidad en computación",
         org: "Escuela Técnica 29 DE 6 Reconquista de Buenos Aires",
-        desc: "Enfoque en la programación, bases de datos, redes, hardware y el desarrollo de proyectos informáticos."
+        desc: "Formación integral en desarrollo de software, arquitectura de sistemas y redes. Especializado en la resolución de problemas técnicos y desarrollo de soluciones programáticas."
     },
     {
-        date: "Actualidad - Junio 2026",
-        title: "Curso de reparacion de computadoras",
-        org: "Centro de formacion Profesional",
-        desc: "Enfoque en la reparacion de computadoras."
-    },
-    {
-        date: "Abril 2026 - Actualidad",
+        date: "Mayo - Actualidad",
         title: "Desarrollo de proyectos con IA",
         org: "Generación T",
-        desc: "Enfoque en el desarrollo de aplicaciones y sistemas integrando herramientas de Inteligencia Artificial."
+        desc: "Implementación de modelos avanzados de inteligencia artificial para la optimización de procesos y creación de proyectos de alto impacto."
+    },
+    {
+        date: "Abril - Actualidad",
+        title: "Curso de Armado y Reparación de PC",
+        org: "Centro de Formación Profesional",
+        desc: "Diagnóstico avanzado y mantenimiento de infraestructura de hardware, asegurando el rendimiento óptimo y la reparación integral de sistemas informáticos."
+    },
+    {
+        date: "2026 - Actualidad",
+        title: "Capacitación en Ethereum",
+        org: "Ecosistema Blockchain",
+        desc: "Exploración de la tecnología blockchain y el ecosistema Web3, orientada al entendimiento de contratos inteligentes y redes descentralizadas."
+    },
+    {
+        date: "2026",
+        title: "Curso de Marketing Digital",
+        org: "Puerta 18",
+        desc: "Análisis para la aplicación de estrategias de posicionamiento SEO y branding digital para potenciar la visibilidad de proyectos tecnológicos."
     },
     {
         date: "Marzo 2026",
         title: "Workshop de Portfolio Estratégico",
         org: "Puerta 18",
-        desc: "Enfoque en la creación de un portfolio profesional y atractivo para los reclutadores."
+        desc: "Diseño y estructuración de perfiles profesionales orientados a maximizar el impacto visual y la conversión ante reclutadores IT."
     },
     {
         date: "Febrero 2026",
         title: "Workshop de Storytelling",
         org: "Puerta 18",
-        desc: "Enfoque en contar historias para conectar con la audiencia."
+        desc: "Técnicas de narrativa y comunicación efectiva aplicadas a la presentación de proyectos y construcción de marca personal."
     },
     {
-        date: "mayo - octubre 2025",
-        title: "Full Stack junior",
-        org: "Generacion T",
-        desc: "Enfoque en lógica de programación, bases de datos SQL y arquitectura web."
+        date: "Mayo - Octubre 2025",
+        title: "Full Stack Junior",
+        org: "Generación T",
+        desc: "Desarrollo de aplicaciones web dinámicas integrando tecnologías Frontend y Backend, con enfoque en escalabilidad y bases de datos relacionales."
     },
     {
-        date: "abril - junio 2025",
-        title: "Curso de Agente de inteligencial con python y API de glock",
-        org: "Talento tech",
-        desc: "Enfoque en entender los conceptos basicos de agentes de inteligencia artificial y hacer una IA basica con python."
+        date: "Abril - Junio 2025",
+        title: "Curso de Agentes de Inteligencia con Python",
+        org: "Talento Tech",
+        desc: "Diseño y despliegue de agentes autónomos y modelos predictivos utilizando Python y APIs avanzadas para la automatización de tareas."
     }
 ];
 
