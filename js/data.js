@@ -325,12 +325,7 @@ const education = [
         org: "Centro de Formación Profesional",
         desc: "Diagnóstico avanzado y mantenimiento de infraestructura de hardware, asegurando el rendimiento óptimo y la reparación integral de sistemas informáticos."
     },
-    {
-        date: "2026 - Actualidad",
-        title: "Capacitación en Ethereum",
-        org: "Ecosistema Blockchain",
-        desc: "Exploración de la tecnología blockchain y el ecosistema Web3, orientada al entendimiento de contratos inteligentes y redes descentralizadas."
-    },
+    
     {
         date: "2026",
         title: "Curso de Marketing Digital",
@@ -357,7 +352,7 @@ const education = [
     },
     {
         date: "Abril - Junio 2025",
-        title: "Curso de Agentes de Inteligencia con Python",
+        title: "Curso de Agentes de Inteligencia Artificial con Python",
         org: "Talento Tech",
         desc: "Diseño y despliegue de agentes autónomos y modelos predictivos utilizando Python y APIs avanzadas para la automatización de tareas."
     }
