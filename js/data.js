@@ -314,6 +314,13 @@ const education = [
         desc: "Formación integral en desarrollo de software, arquitectura de sistemas y redes. Especializado en la resolución de problemas técnicos y desarrollo de soluciones programáticas."
     },
     {
+        date: "Mayo 2026",
+        title: "Capacitacion de redes WIF",
+        org: "TP-LINK",
+        desc: "Capacitación en redes WIF, configuración de dispositivos y soluciones de conectividad."
+    },
+    
+    {
         date: "Mayo - Actualidad",
         title: "Desarrollo de proyectos con IA",
         org: "Generación T",
