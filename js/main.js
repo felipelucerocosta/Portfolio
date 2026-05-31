@@ -12,7 +12,7 @@ let animationId = null;
 
 // Typewriter Logic
 const typewriterElement = document.getElementById('typewriter');
-const phrases = ["Futuro Digital.", "Código Escalable.", "Desarrollo Frontend.", "Experiencias Únicas."];
+const phrases = ["Interfaces Frontend.", "Arquitectura de Redes.", "Experiencias Web.", "Infraestructura LAN."];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -244,10 +244,10 @@ function updateGalleryUI() {
 }
 
 function hexToRgb(hex) {
-    if (!hex) return { r: 57, g: 255, b: 20 };
-    if (hex.startsWith('var')) return { r: 57, g: 255, b: 20 };
+    if (!hex) return { r: 177, g: 94, b: 255 };
+    if (hex.startsWith('var')) return { r: 177, g: 94, b: 255 };
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 57, g: 255, b: 20 };
+    return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 177, g: 94, b: 255 };
 }
 
 function initTilt() {
@@ -331,11 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 if (skill.level) {
-                    let levelColor = '#00f7ff'; 
-                    if (skill.level === 'Básico') levelColor = '#ffbd2e';
-                    if (skill.level === 'Avanzado') levelColor = '#39ff14';
+                    let levelColor = '#00f7ff'; // Cyan as intermediate/default
+                    if (skill.level.includes('Auxiliar') || skill.level.includes('Básico')) levelColor = '#94a3b8'; // Elegant Slate
+                    if (skill.level === 'Avanzado') levelColor = '#b15eff'; // Bioluminescent Purple
                     
-                    div.innerHTML += `<span class="skill-level-badge" style="border-color: ${levelColor}; color: ${levelColor}; box-shadow: inset 0 0 8px ${levelColor}33, 0 0 8px ${levelColor}22;">${skill.level}</span>`;
+                    div.innerHTML += `<span class="skill-level-badge" style="border-color: ${levelColor}; color: ${levelColor}; box-shadow: inset 0 0 8px ${levelColor}22, 0 0 8px ${levelColor}11;">${skill.level}</span>`;
                 }
                 
                 container.appendChild(div);
@@ -479,19 +479,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Binary Background
-    const binaryBg = document.querySelector('.binary-bg');
-    if (binaryBg) {
-        let binaryContent = '';
-        for (let i = 0; i < 12000; i++) binaryContent += Math.random() > 0.5 ? '0' : '1' + (i % 50 === 0 ? ' ' : '');
-        binaryBg.textContent = binaryContent;
-        setInterval(() => {
-            const idx = Math.floor(Math.random() * binaryContent.length);
-            binaryContent = binaryContent.substring(0, idx) + (Math.random() > 0.5 ? '0' : '1') + binaryContent.substring(idx + 1);
-            binaryBg.textContent = binaryContent;
-        }, 100);
-    }
-
     // Carousel Interaction
     const ring = document.getElementById('project-container');
     const scene = document.querySelector('.project-scene');
@@ -554,29 +541,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (e.key === 'ArrowLeft') {
                     currentRotation += angleStep; // Navigate to the previous item on the left
                 }
-                
-                applyRotation(ring, currentRotation, angleStep);
+                                applyRotation(ring, currentRotation, angleStep);
             }
         });
     }
 
-    // Start Typewriter
+    // Start Typewrite
     typeEffect();
-    
-    // Initialize Tilt for all cards (Projects & Timeline)
     initTilt();
-
-    // Iniciar decoraciones de redes y números
     initDecorations();
 });
 
 // --- Decoraciones (Redes y Números flotantes) ---
 function initDecorations() {
-    // Canvas Network (Redes)
+    // Canvas Network — Abyssal Bioluminescent Topology
     const canvas = document.getElementById('network-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width, height, particles;
+        const mouse = { x: null, y: null, radius: 200 };
+        let time = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
         const initCanvas = () => {
             width = window.innerWidth;
@@ -584,45 +578,125 @@ function initDecorations() {
             canvas.width = width;
             canvas.height = height;
             particles = [];
-            // Ajustar densidad según pantalla
-            const density = window.innerWidth < 768 ? 20 : 45;
+            const density = window.innerWidth < 768 ? 30 : 65;
             for (let i = 0; i < density; i++) {
+                const isCyan = Math.random() > 0.45;
                 particles.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.4,
-                    vy: (Math.random() - 0.5) * 0.4,
-                    radius: Math.random() * 1.5 + 0.5
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    radius: Math.random() * 2.2 + 0.6,
+                    originalRadius: Math.random() * 2.2 + 0.6,
+                    isCyan: isCyan,
+                    // Subtle drift oscillation per particle
+                    phase: Math.random() * Math.PI * 2,
+                    amplitude: Math.random() * 0.15 + 0.05,
+                    // Trail history for jellyfish-like effect
+                    trail: []
                 });
             }
         };
 
         const drawNetwork = () => {
             ctx.clearRect(0, 0, width, height);
-            
+            time += 0.008;
+
             for (let i = 0; i < particles.length; i++) {
                 let p = particles[i];
+
+                // Sinusoidal drift for organic underwater movement
+                p.vx += Math.sin(time + p.phase) * p.amplitude * 0.01;
+                p.vy += Math.cos(time + p.phase * 1.3) * p.amplitude * 0.01;
+                // Damping to prevent runaway velocity
+                p.vx *= 0.998;
+                p.vy *= 0.998;
+
+                // Mouse interaction — gentle attraction (bioluminescent swarm)
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - p.x;
+                    let dy = mouse.y - p.y;
+                    let dist = Math.hypot(dx, dy);
+                    if (dist < mouse.radius) {
+                        let force = (mouse.radius - dist) / mouse.radius;
+                        p.x += (dx / dist) * force * 0.6;
+                        p.y += (dy / dist) * force * 0.6;
+                        p.radius = p.originalRadius * (1 + force * 1.2);
+                    } else {
+                        p.radius += (p.originalRadius - p.radius) * 0.05;
+                    }
+                } else {
+                    p.radius += (p.originalRadius - p.radius) * 0.05;
+                }
+
                 p.x += p.vx;
                 p.y += p.vy;
 
                 if (p.x < 0 || p.x > width) p.vx *= -1;
                 if (p.y < 0 || p.y > height) p.vy *= -1;
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(112, 0, 255, 0.5)';
-                ctx.fill();
+                // Store trail positions (keep last 4)
+                p.trail.push({ x: p.x, y: p.y });
+                if (p.trail.length > 4) p.trail.shift();
 
+                // Draw faint particle trail (jellyfish tentacle feel)
+                if (p.trail.length > 1) {
+                    for (let t = 0; t < p.trail.length - 1; t++) {
+                        const trailAlpha = (t / p.trail.length) * 0.12;
+                        const trailR = p.radius * (t / p.trail.length) * 0.6;
+                        ctx.beginPath();
+                        ctx.arc(p.trail[t].x, p.trail[t].y, trailR, 0, Math.PI * 2);
+                        ctx.fillStyle = p.isCyan
+                            ? `rgba(0, 247, 255, ${trailAlpha})`
+                            : `rgba(177, 94, 255, ${trailAlpha})`;
+                        ctx.fill();
+                    }
+                }
+
+                // Draw glowing bioluminescent node
+                const pulseScale = 1 + Math.sin(time * 2 + p.phase) * 0.15;
+                const drawR = p.radius * pulseScale;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, drawR, 0, Math.PI * 2);
+                ctx.fillStyle = p.isCyan ? 'rgba(0, 247, 255, 0.7)' : 'rgba(177, 94, 255, 0.7)';
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = p.isCyan ? '#00f7ff' : '#b15eff';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Draw network connections with gradient
                 for (let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
                     let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 180) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(112, 0, 255, ${0.25 - dist / (180 * 4)})`;
-                        ctx.lineWidth = 0.6;
-                        ctx.stroke();
+                    const maxDist = 200;
+                    if (dist < maxDist) {
+                        let opacity = 0.25 * (1 - dist / maxDist);
+
+                        // Boost opacity for mouse-adjacent connections
+                        if (mouse.x !== null && mouse.y !== null) {
+                            const midX = (p.x + p2.x) / 2;
+                            const midY = (p.y + p2.y) / 2;
+                            const mouseDist = Math.hypot(mouse.x - midX, mouse.y - midY);
+                            if (mouseDist < mouse.radius) {
+                                opacity += 0.15 * (1 - mouseDist / mouse.radius);
+                            }
+                        }
+
+                        if (opacity > 0.02) {
+                            const grad = ctx.createLinearGradient(p.x, p.y, p2.x, p2.y);
+                            grad.addColorStop(0, p.isCyan
+                                ? `rgba(0, 247, 255, ${opacity})`
+                                : `rgba(177, 94, 255, ${opacity})`);
+                            grad.addColorStop(1, p2.isCyan
+                                ? `rgba(0, 247, 255, ${opacity * 0.6})`
+                                : `rgba(177, 94, 255, ${opacity * 0.6})`);
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = grad;
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
                     }
                 }
             }
@@ -634,35 +708,36 @@ function initDecorations() {
         drawNetwork();
     }
 
-    // Números Flotantes
+    // Burbujas Marinas Bioluminiscentes
     const fnContainer = document.getElementById('floating-numbers-container');
     if (fnContainer) {
-        const createNumber = () => {
-            const num = document.createElement('div');
-            num.className = 'floating-number';
-            
-            const rand = Math.random();
-            if (rand > 0.8) {
-                const hexOpts = ['0x4F', '0xA1', '0xFF', '0x1C', '0x00', '0x7B'];
-                num.textContent = hexOpts[Math.floor(Math.random() * hexOpts.length)];
-            } else if (rand > 0.4) {
-                num.textContent = Math.random() > 0.5 ? '0101' : '1010';
+        const createBubble = () => {
+            const bubble = document.createElement('div');
+            bubble.className = 'floating-bubble';
+
+            const size = Math.random() * 18 + 6; // 6px to 24px
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+
+            bubble.style.left = Math.random() * 95 + 'vw';
+
+            const dur = 10 + Math.random() * 10; // 10s to 20s — slower, more serene
+            bubble.style.animationDuration = dur + 's';
+
+            // Random bioluminescent tint
+            if (Math.random() > 0.5) {
+                bubble.style.setProperty('--primary-rgb', '177, 94, 255');
             } else {
-                num.textContent = Math.random() > 0.5 ? '0' : '1';
+                bubble.style.setProperty('--primary-rgb', '0, 247, 255');
             }
-            
-            num.style.left = Math.random() * 95 + 'vw';
-            
-            const dur = 6 + Math.random() * 8;
-            num.style.animationDuration = dur + 's';
-            
-            fnContainer.appendChild(num);
-            
+
+            fnContainer.appendChild(bubble);
+
             setTimeout(() => {
-                num.remove();
+                bubble.remove();
             }, dur * 1000);
         };
 
-        setInterval(createNumber, 800);
+        setInterval(createBubble, 800); // Slightly less frequent for elegance
     }
 }

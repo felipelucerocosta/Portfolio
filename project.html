@@ -11,7 +11,7 @@
     <!-- FontAwesome & Devicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="css/index.css?v=2">
+    <link rel="stylesheet" href="css/index.css?v=3">
     <style>
         .project-details-hero {
             padding: 10rem 0 2rem 0;
@@ -370,22 +370,22 @@
                 <div class="terminal-dot td-green"></div>
             </div>
             <div class="terminal-line">
-                <span class="term-prompt">root@felipe-costa/portfolio:~$</span>
+                <span class="term-prompt">felipe-costa@abyss:~$</span>
                 <span class="term-command">./status --current</span>
             </div>
-            <div class="terminal-line" style="color: #27c93f;">
-                > System operational. Design mode: Hacker Premium.
+            <div class="terminal-line" style="color: var(--highlight);">
+                > System operational. Design mode: Abyssal Marine Connect.
             </div>
             <div class="terminal-line">
-                <span class="term-prompt">root@felipe-costa/portfolio:~$</span>
-                <span class="term-command">./connect --network</span>
+                <span class="term-prompt">felipe-costa@abyss:~$</span>
+                <span class="term-command">./connect --network --formal</span>
             </div>
             <div class="terminal-links">
                 <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:felipelucero534@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
-            <span class="terminal-copyright">&copy; 2026 Felipe Costa. Root Access Granted.</span>
+            <span class="terminal-copyright">&copy; 2026 Felipe Costa. Deep Sea Net Established.</span>
         </div>
     </footer>
     <script>
@@ -397,16 +397,16 @@
             canvas.width = window.innerWidth;
             canvas.height = canvas.parentElement.offsetHeight;
             
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+            const chars = '01';
             const fontSize = 14;
             let columns = canvas.width / fontSize;
             let drops = Array.from({length: columns}).fill(1);
             
             function draw() {
-                ctx.fillStyle = 'rgba(2, 1, 4, 0.1)';
+                ctx.fillStyle = 'rgba(2, 1, 8, 0.1)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
-                ctx.fillStyle = '#0f0';
+                ctx.fillStyle = 'rgba(177, 94, 255, 0.25)'; // Abyssal purple rain
                 ctx.font = fontSize + 'px monospace';
                 
                 for (let i = 0; i < drops.length; i++) {

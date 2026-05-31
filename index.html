@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Felipe Costa - Junior Frontend Developer Portfolio - Innovando con Código">
-    <title>Felipe Costa | Frontend Developer</title>
+    <meta name="description"
+        content="Felipe Costa — Desarrollador Frontend y Arquitecto de Redes con experiencia en interfaces de alto impacto, infraestructura LAN y conocimiento complementario en Backend. Disponible para oportunidades laborales.">
+    <title>Felipe Costa | Frontend Developer & Network Architect</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;800&family=Permanent+Marker&family=Shadows+Into+Light&family=JetBrains+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
     <!-- FontAwesome & Devicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="css/index.css?v=2">
+    <link rel="stylesheet" href="css/index.css?v=3">
 </head>
 
 <body class="dark-theme">
@@ -34,7 +35,7 @@
                 <li><a href="#skills">Habilidades</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
-           
+
             <div class="menu-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -46,11 +47,19 @@
         <section id="home" class="hero-merged scroll-spy-target">
             <div class="hero-container">
                 <div class="container hero-content">
-                    <h1 class="headline">Hola, soy Felipe.<br>Diseño&nbsp;<span id="typewriter"></span></h1>
-                    <p class="description">Construyendo el futuro digital con un fuerte enfoque en el desarrollo Frontend, creando interfaces creativas, eficientes y centradas en el usuario.</p>
+                    <div class="cyber-telemetry"
+                        style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--highlight); margin-bottom: 1.5rem; opacity: 0.8; letter-spacing: 1px;">
+                        <span><i class="fas fa-network-wired"></i> STATUS: DISPONIBLE</span>
+                        <span><i class="fas fa-server"></i> FOCO: FRONTEND + REDES</span>
+                        <span><i class="fas fa-anchor"></i> OPEN_TO_WORK: TRUE</span>
+                    </div>
+                    <h1 class="headline">Hola, soy Felipe.<br>Construyo&nbsp;<span id="typewriter"></span></h1>
+                    <p class="description">Desarrollador Frontend y Arquitecto de Redes. Diseño interfaces modernas de
+                        alto impacto, estructuro infraestructuras de red eficientes y me complemento con desarrollo
+                        Backend para entregar soluciones integrales.</p>
                     <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary shadow-glow">Explorar Proyectos</a>
-                        <a href="#contact" class="btn btn-secondary">Contratame</a>
+                        <a href="#projects" class="btn btn-primary shadow-glow">Ver mis Proyectos</a>
+                        <a href="#contact" class="btn btn-secondary">Hablemos</a>
                     </div>
                 </div>
             </div>
@@ -60,17 +69,22 @@
                     <div class="about-grid">
                         <div class="about-image">
                             <div class="image-box">
-                                <img src="./Pescador cibernético en traje oscuro.png" alt="Avatar Pez Diablo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
+                                <img src="./Pescador cibernético en traje oscuro.png" alt="Avatar Pez Diablo"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
                             </div>
                         </div>
                         <div class="about-info">
                             <h2 class="section-title">Sobre Mí</h2>
-                            <h3 class="about-subtitle">Combinando Creatividad y Tecnología</h3>
+                            <h3 class="about-subtitle">Tecnología con propósito. Código con visión.</h3>
                             <p class="about-text">
-                                ¡Hola! Soy estudiante de 6º año en la Escuela Técnica N° 29, especializado en Computación. Me apasiona el desarrollo Frontend, donde enfoco mi creatividad en construir interfaces modernas, claras y con una experiencia de usuario excepcional. Mi objetivo es aprender constantemente y aportar soluciones innovadoras en cada desafío técnico.
-                            </p>
+    Soy <strong>Felipe Costa</strong>, estudiante de Computación especializado en Desarrollo Frontend y Redes. Me apasiona crear interfaces modernas, accesibles y de alto rendimiento, combinando diseño, experiencia de usuario y tecnología para construir soluciones digitales eficientes.
+
+    Además de mi enfoque en Frontend, cuento con conocimientos en redes, bases de datos y desarrollo Backend, lo que me permite comprender los proyectos de forma integral y adaptarme a distintos desafíos tecnológicos.
+
+    Actualmente busco oportunidades para seguir creciendo profesionalmente, aportar valor a proyectos innovadores y continuar ampliando mis conocimientos en desarrollo de software e infraestructura tecnológica.
+</p>
                             <div class="hero-actions">
-                                <a href="#contact" class="btn btn-primary">Contratame</a>
+                                <a href="#contact" class="btn btn-primary">Contactame</a>
                             </div>
                         </div>
                     </div>
@@ -93,8 +107,8 @@
             <div class="container project-section-container">
                 <div class="section-header centered">
                     <h2 class="section-title">Proyectos</h2>
-                    <p class="section-subtitle">Gira el anillo para explorar mis creaciones</p>
-                    
+                    <p class="section-subtitle">Soluciones reales desarrolladas de principio a fin</p>
+
                     <div class="project-filters">
                         <button class="filter-btn active" data-filter="todos">Todos</button>
                         <button class="filter-btn" data-filter="web">Web</button>
@@ -102,14 +116,14 @@
                         <button class="filter-btn" data-filter="programas">Sistemas</button>
                     </div>
                 </div>
-                
+
                 <div class="project-scene">
                     <div class="project-ring" id="project-container">
                         <!-- Projects rendered here by JS -->
                     </div>
                 </div>
-                
-                
+
+
             </div>
         </section>
 
@@ -120,21 +134,37 @@
                     <h2 class="section-title">Habilidades</h2>
                 </div>
                 <div class="skills-wrapper">
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <div class="skills-grid" id="frontend-skills"></div>
+                    <!-- Especialidades Técnicas (Especialidad) -->
+                    <div class="skills-block specialty-block">
+                        <div class="block-header">
+                            <span class="block-badge"><i class="fas fa-star"></i> Especialidad</span>
+                            <h3 class="block-title">Foco Principal & Especialidades</h3>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Frontend (Interfaces & Experiencia de Usuario)</h3>
+                            <div class="skills-grid" id="frontend-skills"></div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Redes e Infraestructura (Conectividad & Flujo)</h3>
+                            <div class="skills-grid" id="tools-skills"></div>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <div class="skills-grid" id="backend-skills"></div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Herramientas</h3>
-                        <div class="skills-grid" id="tools-skills"></div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Habilidades Blandas</h3>
-                        <div class="skills-grid" id="blandas-skills"></div>
+
+                    <!-- Competencias Complementarias (Complementarios) -->
+                    <div class="skills-block complementary-block">
+                        <div class="block-header">
+                            <span class="block-badge complement-badge"><i class="fas fa-project-diagram"></i>
+                                Complementario</span>
+                            <h3 class="block-title">Tecnologías Complementarias</h3>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Backend & Bases de Datos (Integración Funcional)</h3>
+                            <div class="skills-grid" id="backend-skills"></div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Habilidades Blandas & Gestión de Proyectos</h3>
+                            <div class="skills-grid" id="blandas-skills"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,37 +176,42 @@
                 <div class="contact-card-v2 glass-card">
                     <div class="contact-visual">
                         <div class="cyber-graffiti">HIRE<br><span>ME</span></div>
-                        <p class="contact-subtext">¿Buscás sumar talento técnico a tu equipo? Hablemos sobre cómo puedo aportar valor a tu empresa.</p>
+                        <p class="contact-subtext">¿Buscás incorporar un desarrollador Frontend con visión en redes e
+                            infraestructura? Cuéntame sobre tu equipo y veamos cómo puedo sumar.</p>
                         <div class="social-links-contact">
-                            <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank"
+                                title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="mailto:felipelucero534@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                     <div class="contact-form-container">
-                        <form action="https://formsubmit.co/felipelucero534@gmail.com" method="POST" class="contact-form-v2">
+                        <form action="https://formsubmit.co/felipelucero534@gmail.com" method="POST"
+                            class="contact-form-v2">
                             <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="¡Nueva propuesta laboral desde tu Portfolio!">
+                            <input type="hidden" name="_subject"
+                                value="Nueva oportunidad desde el Portfolio de Felipe Costa">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
-                            
+
                             <div class="input-group">
                                 <input type="text" name="name" id="name" required placeholder=" ">
-                                <label for="name">Tu Nombre</label>
+                                <label for="name">Nombre completo</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
                                 <input type="email" name="email" id="email" required placeholder=" ">
-                                <label for="email">Tu Email</label>
+                                <label for="email">Correo electrónico</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
                                 <textarea name="message" id="message" required placeholder=" "></textarea>
-                                <label for="message">Contame sobre el puesto o propuesta...</label>
+                                <label for="message">Cuéntame sobre el rol o propuesta...</label>
                                 <div class="input-line"></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-cyber">
-                                <span>Enviar Mensaje</span>
+                                <span>Enviar mensaje</span>
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
@@ -194,7 +229,7 @@
                 <div class="modal-main-content">
                     <span id="modal-category" class="modal-category-tag">Categoría</span>
                     <h2 id="modal-title">Título del Proyecto</h2>
-                    
+
                     <div class="modal-gallery-premium">
                         <div class="mesh-bg-modal"></div>
                         <div class="gallery-slider" id="gallery-slider">
@@ -213,25 +248,29 @@
                         <i id="modal-icon"></i>
                     </div>
                     <div class="modal-description-section">
-                        <h3>Sobre el Proyecto</h3>
+                        <h3>Descripción del Proyecto</h3>
                         <p id="modal-long-desc">Descripción detallada...</p>
                         <div class="modal-features-premium">
-                            <h4>Funcionalidades Destacadas</h4>
+                            <h4>Funcionalidades Clave</h4>
                             <ul id="modal-features-list"></ul>
                         </div>
                     </div>
                 </div>
                 <aside class="modal-sidebar">
                     <div class="sidebar-block">
-                        <h4>Stack Tecnológico</h4>
+                        <h4>Tecnologías Utilizadas</h4>
                         <div class="modal-tags" id="modal-tags"></div>
                     </div>
                     <div class="sidebar-block">
-                        <h4>Links del Proyecto</h4>
+                        <h4>Recursos del Proyecto</h4>
                         <div class="modal-actions-sidebar">
-                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank"><i class="fab fa-github"></i> Ver Código</a>
-                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
-                            <a href="#" class="btn-modal btn-primary btn-cyber" id="modal-process" style="margin-top: 1rem; width: 100%;"><i class="fas fa-terminal"></i> Ver Proceso</a>
+                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank"><i
+                                    class="fab fa-github"></i> Código fuente</a>
+                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Demo en vivo</a>
+                            <a href="#" class="btn-modal btn-primary btn-cyber" id="modal-process"
+                                style="margin-top: 1rem; width: 100%;"><i class="fas fa-terminal"></i> Ver proceso de
+                                desarrollo</a>
                         </div>
                     </div>
                 </aside>
@@ -240,7 +279,8 @@
     </div>
 
 
-    <footer class="footer-terminal" onclick="if(!event.target.closest('a')) window.location.href='#projects'" style="cursor: pointer;" title="Ir a Proyectos">
+    <footer class="footer-terminal" onclick="if(!event.target.closest('a')) window.location.href='#projects'"
+        style="cursor: pointer;" title="Ir a Proyectos">
         <canvas id="matrix-canvas-footer" class="matrix-canvas"></canvas>
         <div class="footer-terminal-content">
             <div class="terminal-header">
@@ -248,57 +288,64 @@
                 <div class="terminal-dot td-yellow"></div>
                 <div class="terminal-dot td-green"></div>
             </div>
-            
+
             <div class="terminal-line">
-                <span class="term-prompt">root@felipe-costa/home:~$</span>
-                <span class="term-command">echo "gracias por darme bola" && ./view --projects</span>
+                <span class="term-prompt">felipe-costa@abyss:~$</span>
+                <span class="term-command">./connect --status --open-to-work</span>
             </div>
-            <div class="terminal-line" style="color: #27c93f;">
-                > gracias por darme bola
+            <div class="terminal-line" style="color: var(--highlight);">
+                > Portfolio de Felipe Costa — Conexión establecida correctamente.
             </div>
-            <div class="terminal-line" style="color: #00ffcc; font-weight: bold; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                > System operational. [ Haz clic en la terminal para volver a Proyectos ] <i class="fas fa-level-up-alt fa-flip-horizontal" style="animation: pulse 2s infinite;"></i>
+            <div class="terminal-line"
+                style="color: var(--primary); font-weight: bold; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                > Sistema activo. [ Clic en la terminal para volver a Proyectos ] <i
+                    class="fas fa-level-up-alt fa-flip-horizontal" style="animation: pulse 2s infinite;"></i>
             </div>
 
             <div class="terminal-line" style="margin-top: 1rem;">
-                <span class="term-prompt">root@felipe-costa/home:~$</span>
-                <span class="term-command">./hire.sh --network</span>
+                <span class="term-prompt">felipe-costa@abyss:~$</span>
+                <span class="term-command">./contact --recruiter --linkedin --github</span>
             </div>
-            
+
             <div class="terminal-links" style="justify-content: flex-start; margin-top: 0.5rem;">
-                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn" onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:felipelucero534@gmail.com" title="Email" onclick="event.stopPropagation();"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"
+                    onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"
+                    onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:felipelucero534@gmail.com" title="Email" onclick="event.stopPropagation();"><i
+                        class="fas fa-envelope"></i></a>
             </div>
-            <span class="terminal-copyright" style="display: block; text-align: right; margin-top: -1rem; margin-right: 1.5rem;">&copy; 2026 Felipe Costa. Root Access Granted.</span>
+            <span class="terminal-copyright"
+                style="display: block; text-align: right; margin-top: -1rem; margin-right: 1.5rem;">&copy; 2026 Felipe
+                Costa — Disponible para oportunidades profesionales.</span>
         </div>
     </footer>
     <script>
         // Matrix Rain Footer Script
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('matrix-canvas-footer');
-            if(!canvas) return;
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            
+
             canvas.width = window.innerWidth;
             canvas.height = canvas.parentElement.offsetHeight;
-            
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+
+            const chars = '01'; // Clean binary rain for network feeling
             const fontSize = 14;
             let columns = canvas.width / fontSize;
-            let drops = Array.from({length: columns}).fill(1);
-            
+            let drops = Array.from({ length: columns }).fill(1);
+
             function draw() {
-                ctx.fillStyle = 'rgba(2, 1, 4, 0.1)';
+                ctx.fillStyle = 'rgba(2, 1, 8, 0.1)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = '#0f0';
+
+                ctx.fillStyle = 'rgba(177, 94, 255, 0.25)'; // Subdued elegant purple rain
                 ctx.font = fontSize + 'px monospace';
-                
+
                 for (let i = 0; i < drops.length; i++) {
                     const text = chars[Math.floor(Math.random() * chars.length)];
                     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    
+
                     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                         drops[i] = 0;
                     }
@@ -306,12 +353,12 @@
                 }
             }
             setInterval(draw, 33);
-            
+
             window.addEventListener('resize', () => {
                 canvas.width = window.innerWidth;
                 canvas.height = canvas.parentElement.offsetHeight;
                 columns = canvas.width / fontSize;
-                drops = Array.from({length: columns}).fill(1);
+                drops = Array.from({ length: columns }).fill(1);
             });
         });
     </script>

@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    if (!projectColor) projectColor = '#39ff14'; // Fallback a neon green
+    if (!projectColor) projectColor = '#b15eff'; // Fallback a bioluminescent purple
     
     document.documentElement.style.setProperty('--project-color', projectColor);
     
     const hexToRgbLocal = (hex) => {
-        if (!hex) return { r: 57, g: 255, b: 20 };
+        if (!hex) return { r: 177, g: 94, b: 255 };
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 57, g: 255, b: 20 };
+        return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 177, g: 94, b: 255 };
     };
     
-    const rgb = hexToRgbLocal(projectColor.startsWith('#') ? projectColor : '#39ff14');
+    const rgb = hexToRgbLocal(projectColor.startsWith('#') ? projectColor : '#b15eff');
     document.documentElement.style.setProperty('--project-color-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
     
     // Llenar datos
@@ -291,7 +291,7 @@ function initNetworkCanvas() {
 
         // Determinar el color una vez por fuera del loop para optimizar el rendimiento (evita lag)
         const rootStyle = getComputedStyle(document.documentElement);
-        const projRgb = rootStyle.getPropertyValue('--project-color-rgb').trim() || '112, 0, 255';
+        const projRgb = rootStyle.getPropertyValue('--project-color-rgb').trim() || '177, 94, 255';
 
         const drawNetwork = () => {
             ctx.clearRect(0, 0, width, height);
