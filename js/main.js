@@ -1,7 +1,9 @@
 /**
- * main.js — Portfolio App Orchestrator v5
+ * main.js — Portfolio App Orchestrator v6
+ * Tech Aquatic Glass — Complete Visual Evolution
  * Handles: Typewriter, Skills, Project Grid, Modal, Lightbox,
- *          3D Museum, Scroll Spy, Navbar Scroll, Mobile Drawer.
+ *          3D Museum, Scroll Spy, Navbar Scroll, Mobile Drawer,
+ *          Card Tilt 3D, Scroll Reveal, Decorative Bubbles.
  */
 
 'use strict';
@@ -18,17 +20,12 @@ function initNavbar() {
 
     if (!navbar) return;
 
-    // Scroll → add .scrolled class
-    let lastScroll = 0;
     const onScroll = () => {
-        const y = window.scrollY;
-        navbar.classList.toggle('scrolled', y > 60);
-        lastScroll = y;
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Mobile drawer open/close
     const openMenu = () => {
         navMenu.classList.add('open');
         navOverlay.classList.add('active');
@@ -53,21 +50,17 @@ function initNavbar() {
 
     navOverlay?.addEventListener('click', closeMenu);
 
-    // Close mobile menu when a link is clicked
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            closeMenu();
-        });
+        link.addEventListener('click', () => closeMenu());
     });
 
-    // Keyboard: Escape closes menu
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navMenu.classList.contains('open')) closeMenu();
     });
 }
 
 // ──────────────────────────────────────────
-// SCROLL SPY: Active nav link detection
+// SCROLL SPY
 // ──────────────────────────────────────────
 function initScrollSpy() {
     const navLinks = document.querySelectorAll('.nav-link[data-section]');
@@ -85,15 +78,10 @@ function initScrollSpy() {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActive(entry.target.id);
-                }
+                if (entry.isIntersecting) setActive(entry.target.id);
             });
         },
-        {
-            rootMargin: '-20% 0px -65% 0px',
-            threshold: 0
-        }
+        { rootMargin: '-20% 0px -65% 0px', threshold: 0 }
     );
 
     sections.forEach(s => observer.observe(s));
@@ -135,34 +123,59 @@ function typeEffect() {
 }
 
 // ──────────────────────────────────────────
-// SKILLS RENDERER
+// SKILLS RENDERER — floating chips in glass panels
 // ──────────────────────────────────────────
+const categoryDescriptions = {
+    frontend: "Desarrollo de interfaces modernas, dinámicas y accesibles con tecnologías web de vanguardia.",
+    backend:  "Arquitectura de APIs, bases de datos relacionales y lógica de servidor robusta.",
+    redes:    "Diseño, implementación y optimización de infraestructuras de red LAN y conectividad.",
+    hardware: "Ensamblado, reparación de hardware, robótica, electrónica y herramientas de gestión técnica.",
+    blandas:  "Competencias profesionales para trabajo en equipo, resolución de problemas y gestión efectiva."
+};
+
+function getLevelColor(level) {
+    if (!level) return '#546e8a';
+    if (level.includes('Avanzado'))  return '#00f0ff';
+    if (level.includes('Intermedio')) return '#0891b2';
+    if (level.includes('Básico'))    return '#546e8a';
+    return '#546e8a';
+}
+
 function renderSkills() {
     Object.keys(skillsData).forEach(category => {
         const container = document.getElementById(`${category}-skills`);
         if (!container) return;
         container.innerHTML = '';
 
+        // Inject description above grid
+        const panel = container.closest('.skills-category-card');
+        if (panel) {
+            const existingDesc = panel.querySelector('.category-desc');
+            if (!existingDesc && categoryDescriptions[category]) {
+                const desc = document.createElement('p');
+                desc.className = 'category-desc';
+                desc.textContent = categoryDescriptions[category];
+                container.before(desc);
+            }
+        }
+
         skillsData[category].forEach(skill => {
             const div = document.createElement('div');
-            div.className = 'skill-item glass-card';
+            div.className = 'skill-item';
 
             const iconHtml = skill.isSvg
                 ? (svgIcons[skill.icon] || '')
                 : `<i class="${skill.icon}"></i>`;
 
-            let badgeHtml = '';
-            if (skill.level) {
-                let c = '#00f7ff';
-                if (skill.level.includes('Avanzado')) c = '#b15eff';
-                if (skill.level.includes('Básico'))   c = '#64748b';
-                badgeHtml = `<span class="skill-level-badge" style="border-color:${c};color:${c}">${skill.level}</span>`;
-            }
+            const levelColor = getLevelColor(skill.level);
+            const levelHtml  = skill.level
+                ? `<span class="skill-level-dot" style="background:${levelColor};box-shadow:0 0 6px ${levelColor}40;" title="${skill.level}"></span>`
+                : '';
 
             div.innerHTML = `
-                <div class="skill-icon">${iconHtml}</div>
+                <span class="skill-icon">${iconHtml}</span>
                 <span class="skill-name">${skill.name}</span>
-                ${badgeHtml}
+                ${levelHtml}
             `;
             container.appendChild(div);
         });
@@ -196,9 +209,12 @@ function renderProjects(filter = 'todos') {
                     ? 'img/Logo minimalista con globo y www.png'
                     : 'img/packet_tracer.png');
 
-        // Tag chips (max 3)
+        // Tech pills (max 3)
         const tagsHtml = project.tags.slice(0, 3)
-            .map(t => `<span class="tag-mini"><i class="${tagIcons[t] || 'fas fa-code'}"></i>${t}</span>`)
+            .map(t => {
+                const icon = tagIcons[t] || 'fas fa-code';
+                return `<span class="tag-mini"><i class="${icon}"></i>${t}</span>`;
+            })
             .join('');
 
         card.innerHTML = `
@@ -207,7 +223,7 @@ function renderProjects(filter = 'todos') {
                      class="project-logo-img"
                      alt="${project.title}"
                      loading="lazy"
-                     onerror="this.src='https://placehold.co/400x220/020617/00f7ff?text=${encodeURIComponent(project.title)}'">
+                     onerror="this.src='https://placehold.co/400x220/020917/00f0ff?text=${encodeURIComponent(project.title)}'">
                 <span class="project-category-badge">${project.category}</span>
             </div>
             <div class="project-info">
@@ -238,10 +254,18 @@ function renderProjects(filter = 'todos') {
             }
         });
 
-        // Animation stagger
-        card.style.animationDelay = `${index * 0.06}s`;
+        // Stagger animation delay
+        card.style.transitionDelay = `${index * 0.04}s`;
+        card.classList.add('reveal');
+
         container.appendChild(card);
     });
+
+    // Trigger scroll reveal after render
+    requestAnimationFrame(() => initScrollReveal());
+
+    // Re-apply tilt to new cards
+    initCardTilt();
 }
 
 // ──────────────────────────────────────────
@@ -278,8 +302,8 @@ function openModal(project) {
     const modal = document.getElementById('project-modal');
     if (!modal) return;
 
-    document.getElementById('modal-title').textContent    = project.title;
-    document.getElementById('modal-category').textContent = project.category;
+    document.getElementById('modal-title').textContent     = project.title;
+    document.getElementById('modal-category').textContent  = project.category;
     document.getElementById('modal-long-desc').textContent = project.longDesc;
     const iconEl = document.getElementById('modal-icon');
     if (iconEl) iconEl.className = project.icon || '';
@@ -291,7 +315,7 @@ function openModal(project) {
 
     // Features
     document.getElementById('modal-features-list').innerHTML = project.features
-        .map(f => `<li><i class="fas fa-check-circle" style="color:var(--highlight)"></i> ${f}</li>`)
+        .map(f => `<li><i class="fas fa-check-circle" style="color:var(--cyan)"></i> ${f}</li>`)
         .join('');
 
     // Links
@@ -306,7 +330,7 @@ function openModal(project) {
         demoBtn.style.display = (project.demo && project.demo !== '#') ? 'flex' : 'none';
     }
 
-    // Museum trigger button inside modal
+    // Museum trigger inside modal
     const museumBtn = document.getElementById('modal-process-trigger');
     if (museumBtn) {
         museumBtn.onclick = () => {
@@ -348,9 +372,9 @@ function renderGallery() {
         currentProjectImages.forEach((img, i) => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
-            item.innerHTML = `<img src="${img}" alt="Captura ${i + 1}" 
+            item.innerHTML = `<img src="${img}" alt="Captura ${i + 1}"
                 onclick="window.openLightboxGroup(0,${i},currentProjectImages)"
-                onerror="this.src='https://placehold.co/800x450/020617/00f7ff?text=Captura+de+Proyecto'">`;
+                onerror="this.src='https://placehold.co/800x450/020917/00f0ff?text=Captura+de+Proyecto'">`;
             slider.appendChild(item);
 
             const dot = document.createElement('div');
@@ -436,13 +460,146 @@ function initFilters() {
 }
 
 // ──────────────────────────────────────────
+// SCROLL REVEAL — IntersectionObserver
+// ──────────────────────────────────────────
+function initScrollReveal() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+        // Make all reveal elements immediately visible
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.classList.add('visible');
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// ──────────────────────────────────────────
+// CARD TILT 3D — Subtle mouse-based perspective
+// ──────────────────────────────────────────
+function initCardTilt() {
+    // Disable on mobile / touch / reduced-motion
+    const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+    const prefersReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isTouchDevice() || prefersReduced()) return;
+
+    const tiltCards = document.querySelectorAll(
+        '.project-card, .about-card-mini'
+    );
+
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (isTouchDevice() || prefersReduced()) return;
+
+            const rect   = card.getBoundingClientRect();
+            const cx     = rect.left + rect.width / 2;
+            const cy     = rect.top  + rect.height / 2;
+            const dx     = e.clientX - cx;
+            const dy     = e.clientY - cy;
+
+            const maxTilt = 4; // degrees
+            const rotX = -(dy / (rect.height / 2)) * maxTilt;
+            const rotY =  (dx / (rect.width  / 2)) * maxTilt;
+
+            card.style.transform    = `perspective(1100px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+            card.style.transition   = 'transform 0.12s ease-out';
+            card.style.willChange   = 'transform';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform  = '';
+            card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.36s ease, border-color 0.36s ease';
+            card.style.willChange = 'auto';
+        });
+    });
+}
+
+// ──────────────────────────────────────────
+// DECORATIVE BUBBLES — Ambient underwater effect
+// ──────────────────────────────────────────
+function initBubbles() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const bubbleConfigs = [
+        // [sectionId, count, sizes, positions]
+        ['skills',   2, [120, 80],  [{ top: '10%', right: '3%' }, { bottom: '15%', left: '2%' }]],
+        ['projects', 1, [160],      [{ top: '5%',  right: '2%' }]],
+    ];
+
+    const style = document.createElement('style');
+    style.id = 'bubble-styles';
+    style.textContent = `
+        .deco-bubble {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: ${prefersReduced ? 0 : 1};
+        }
+        @keyframes bubble-float {
+            0%   { transform: translateY(0px) scale(1); }
+            40%  { transform: translateY(-20px) scale(1.03); }
+            70%  { transform: translateY(-10px) scale(0.97); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    if (prefersReduced) return;
+
+    bubbleConfigs.forEach(([sectionId, count, sizes, positions]) => {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        // Ensure section has position relative for absolute children
+        section.style.position = 'relative';
+        section.style.overflow = 'hidden';
+
+        positions.slice(0, count).forEach((pos, i) => {
+            const size     = sizes[i] || sizes[0];
+            const duration = 14 + i * 6;
+            const delay    = i * 3;
+
+            const bubble = document.createElement('div');
+            bubble.className = 'deco-bubble';
+
+            Object.assign(bubble.style, {
+                width:       `${size}px`,
+                height:      `${size}px`,
+                background:  `radial-gradient(circle at 35% 35%, rgba(0,240,255,0.06) 0%, rgba(0,200,224,0.02) 50%, transparent 70%)`,
+                border:      '1px solid rgba(0,240,255,0.05)',
+                backdropFilter: 'blur(2px)',
+                animation:   `bubble-float ${duration}s ease-in-out ${delay}s infinite`,
+                ...pos
+            });
+
+            section.appendChild(bubble);
+        });
+    });
+}
+
+// ──────────────────────────────────────────
 // HELPER UTILITIES
 // ──────────────────────────────────────────
 function hexToRgb(hex) {
-    if (!hex || hex.startsWith('var')) return { r: 0, g: 247, b: 255 };
+    if (!hex || hex.startsWith('var')) return { r: 0, g: 240, b: 255 };
     const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return r ? { r: parseInt(r[1], 16), g: parseInt(r[2], 16), b: parseInt(r[3], 16) }
-             : { r: 0, g: 247, b: 255 };
+             : { r: 0, g: 240, b: 255 };
 }
 
 // ──────────────────────────────────────────
@@ -472,7 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Timeline
     renderTimeline();
 
-    // 7. Modal close
+    // 7. Modal close events
     document.querySelector('.modal-close')?.addEventListener('click', closeModal);
 
     window.addEventListener('click', (e) => {
@@ -487,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 8. Lightbox keyboard
+    // 8. Lightbox keyboard navigation
     window.addEventListener('keydown', (e) => {
         const lb = document.getElementById('lightbox-modal');
         if (!lb || lb.style.display !== 'block') return;
@@ -507,4 +664,25 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: offset, behavior: 'smooth' });
         });
     });
+
+    // 10. Scroll Reveal — static elements
+    // Add reveal class to key static elements
+    const revealTargets = [
+        '.section-header',
+        '.about-grid',
+        '.timeline-item',
+        '.contact-card-v2'
+    ];
+    revealTargets.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('reveal');
+        });
+    });
+    initScrollReveal();
+
+    // 11. Card Tilt 3D
+    initCardTilt();
+
+    // 12. Decorative Bubbles
+    initBubbles();
 });
