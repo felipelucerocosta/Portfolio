@@ -26,17 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    if (!projectColor) projectColor = '#b15eff'; // Fallback a bioluminescent purple
+    if (!projectColor) projectColor = '#00f7ff';
     
     document.documentElement.style.setProperty('--project-color', projectColor);
     
     const hexToRgbLocal = (hex) => {
-        if (!hex) return { r: 177, g: 94, b: 255 };
+        if (!hex) return { r: 0, g: 247, b: 255 };
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 177, g: 94, b: 255 };
+        return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 0, g: 247, b: 255 };
     };
     
-    const rgb = hexToRgbLocal(projectColor.startsWith('#') ? projectColor : '#b15eff');
+    const rgb = hexToRgbLocal(projectColor.startsWith('#') ? projectColor : '#00f7ff');
     document.documentElement.style.setProperty('--project-color-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
     
     // Llenar datos
@@ -44,35 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('project-title').textContent = project.title;
     document.getElementById('project-longDesc').textContent = project.longDesc;
     
-    const tagIcons = {
-        'ReactJS': 'devicon-react-original colored',
-        'Node.js': 'devicon-nodejs-plain colored',
-        'Express': 'devicon-express-original',
-        'PostgreSQL': 'devicon-postgresql-plain colored',
-        'Javascript': 'devicon-javascript-plain colored',
-        'Python': 'devicon-python-plain colored',
-        'Django': 'devicon-django-plain',
-        'C#': 'devicon-csharp-plain colored',
-        '.NET': 'devicon-dot-net-plain colored',
-        'SQL Server': 'devicon-microsoftsqlserver-plain',
-        'HTML5': 'devicon-html5-plain colored',
-        'CSS3': 'devicon-css3-plain colored',
-        'Tailwind': 'devicon-tailwindcss-plain colored',
-        'Java': 'devicon-java-plain colored',
-        'PHP': 'devicon-php-plain colored',
-        'Sass': 'devicon-sass-original colored',
-        'Next.js': 'devicon-nextjs-original',
-        'TypeScript': 'devicon-typescript-plain colored',
-        'Supabase': 'devicon-supabase-plain colored',
-        'Firebase': 'devicon-firebase-plain colored',
-        'Stripe': 'fab fa-stripe',
-        'WebSockets': 'fas fa-plug',
-        'Socket.io': 'devicon-socketio-original',
-        'MongoDB': 'devicon-mongodb-plain colored',
-        'React Native': 'devicon-react-original colored',
-        'Expo': 'fas fa-mobile-alt'
-    };
-
     const tagsContainer = document.getElementById('project-tags-inline');
     if (tagsContainer) {
         tagsContainer.innerHTML = project.tags.map(t => `<span class="tag-premium-modern"><i class="${tagIcons[t] || 'fas fa-code'}"></i> ${t}</span>`).join('');
@@ -98,16 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (project.demo && project.demo !== "#") {
             linksHTML += `<a href="${project.demo}" target="_blank" class="btn-console"><i class="fas fa-external-link-alt"></i> Aplicación / Demo</a>`;
         }
+        linksHTML += `<a href="index.html#projects" class="btn-console" style="background: rgba(0, 247, 255, 0.15); border-color: var(--project-color);"><i class="fas fa-cube"></i> Experiencia Museo 3D</a>`;
         linksContainer.innerHTML = linksHTML;
     }
     
-    // Nuevos campos detallados
+    // Campos detallados
     document.getElementById('project-problem').textContent = project.problem || 'No especificado.';
     document.getElementById('project-duration').textContent = project.duration || 'No especificado.';
 
     let lightboxGroups = [];
 
-    // --- Versiones y Entregables (Con Imágenes) ---
+    // Versiones
     const vGallery = document.getElementById('project-versions-timeline');
     if (project.versions && project.versions.length > 0) {
         vGallery.innerHTML = project.versions.map(stage => {
@@ -149,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         vGallery.innerHTML = '<p class="about-text" style="opacity: 0.5; padding-top: 1rem;">No hay versiones ni fotos registradas de este proyecto.</p>';
     }
     
-    // --- Complicaciones y Soluciones (Sin Imágenes) ---
+    // Complicaciones
     const cTimeline = document.getElementById('project-complications-timeline');
     if (project.complications && project.complications.length > 0) {
         cTimeline.innerHTML = project.complications.map(comp => `
@@ -163,36 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
         cTimeline.innerHTML = '<p class="about-text" style="opacity: 0.5; padding-top: 1rem;">No hubo complicaciones mayores documentadas.</p>';
     }
     
-    // Configurar el entorno global del lightbox
     window.lightboxGroups = lightboxGroups;
     window.currentGroupIndex = 0;
     window.currentLightboxIndex = 0;
     
     setupLightbox();
     
-    // Mostrar contenido
     document.getElementById('project-main').style.display = 'block';
-    
-    // Fondo binario animado
-    const binaryBg = document.querySelector('.binary-bg');
-    if (binaryBg) {
-        let binaryContent = '';
-        // Increase character count drastically to fill large screens completely
-        for (let i = 0; i < 25000; i++) binaryContent += Math.random() > 0.5 ? '0' : '1' + (i % 50 === 0 ? ' ' : '');
-        binaryBg.textContent = binaryContent;
-        
-        setInterval(() => {
-            const idx = Math.floor(Math.random() * binaryContent.length);
-            binaryContent = binaryContent.substring(0, idx) + (Math.random() > 0.5 ? '0' : '1') + binaryContent.substring(idx + 1);
-            binaryBg.textContent = binaryContent;
-        }, 150);
-    }
-    
-    // Red base
-    initNetworkCanvas();
 });
 
-// --- LIGHTBOX LOGIC ---
 function openLightboxGroup(groupIndex, imageIndex) {
     if (!window.lightboxGroups || window.lightboxGroups.length === 0) return;
     window.currentGroupIndex = groupIndex;
@@ -202,7 +153,7 @@ function openLightboxGroup(groupIndex, imageIndex) {
     const modal = document.getElementById('lightbox-modal');
     if (modal) {
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Evitar scroll
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -248,14 +199,12 @@ function setupLightbox() {
     if (nextBtn) nextBtn.addEventListener('click', nextImage);
     if (prevBtn) prevBtn.addEventListener('click', prevImage);
     
-    // Cerrar si hace clic fuera de la imagen
     modal.addEventListener('click', (e) => {
         if (e.target === modal || e.target.classList.contains('lightbox-content')) {
             closeLightbox();
         }
     });
 
-    // Soporte para flechas del teclado
     window.addEventListener('keydown', (e) => {
         if (modal.style.display === 'block') {
             if (e.key === 'Escape') closeLightbox();
@@ -263,69 +212,4 @@ function setupLightbox() {
             if (e.key === 'ArrowLeft') prevImage();
         }
     });
-}
-
-function initNetworkCanvas() {
-    const canvas = document.getElementById('network-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width, height, particles;
-
-        const initCanvas = () => {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            particles = [];
-            const density = window.innerWidth < 768 ? 20 : 45;
-            for (let i = 0; i < density; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.4,
-                    vy: (Math.random() - 0.5) * 0.4,
-                    radius: Math.random() * 1.5 + 0.5
-                });
-            }
-        };
-
-        // Determinar el color una vez por fuera del loop para optimizar el rendimiento (evita lag)
-        const rootStyle = getComputedStyle(document.documentElement);
-        const projRgb = rootStyle.getPropertyValue('--project-color-rgb').trim() || '177, 94, 255';
-
-        const drawNetwork = () => {
-            ctx.clearRect(0, 0, width, height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${projRgb}, 0.5)`;
-                ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 180) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(${projRgb}, ${0.25 - dist / (180 * 4)})`;
-                        ctx.lineWidth = 0.6;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(drawNetwork);
-        };
-
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        drawNetwork();
-    }
 }

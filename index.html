@@ -5,168 +5,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Felipe Costa — Desarrollador Frontend y Arquitecto de Redes con experiencia en interfaces de alto impacto, infraestructura LAN y conocimiento complementario en Backend. Disponible para oportunidades laborales.">
-    <title>Felipe Costa | Frontend Developer & Network Architect</title>
+        content="Felipe Costa — Técnico en Computación, Desarrollador Frontend y Especialista en Redes & Sistemas. Diseño interfaces modernas de alto impacto, estructuro infraestructuras LAN eficientes y desarrollo proyectos tecnológicos integrales.">
+    <title>Felipe Costa | Técnico en Computación — Frontend, Redes & Sistemas</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
+    
     <!-- FontAwesome & Devicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="css/index.css?v=3">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/index.css?v=5">
+
+    <!-- Three.js Engine for 3D Marine Tech Experience -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body class="dark-theme">
+    <!-- 3D Abyssal Ocean Canvas Container -->
+    <div id="ocean-3d-canvas-container" class="ocean-3d-canvas-container"></div>
     <div class="binary-bg"></div>
     <div class="grid-overlay"></div>
-    <canvas id="network-canvas"></canvas>
-    <div id="floating-numbers-container"></div>
-    <header class="navbar-floating">
-        <nav class="container">
-            <div class="logo">FELIPE <span>COSTA</span></div>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Inicio</a></li>
-                <li><a href="#about">Sobre Mí</a></li>
-                <li><a href="#education">Formación Académica</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
 
-            <div class="menu-toggle" id="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <!-- Logo -->
+            <a href="#home" class="nav-logo" aria-label="Ir al inicio">
+                <span class="logo-text">FC</span>
+                <span class="logo-node" aria-hidden="true">
+                    <span class="node-dot"></span>
+                    <span class="node-line"></span>
+                    <span class="node-dot"></span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="Navegación principal">
+                <ul class="nav-links">
+                    <li><a href="#home"      class="nav-link active" data-section="home">Inicio</a></li>
+                    <li><a href="#about"     class="nav-link" data-section="about">Sobre Mí</a></li>
+                    <li><a href="#skills"    class="nav-link" data-section="skills">Skills</a></li>
+                    <li><a href="#projects"  class="nav-link" data-section="projects">Proyectos</a></li>
+                    <li><a href="#education" class="nav-link" data-section="education">Trayectoria</a></li>
+                    <li><a href="#contact"   class="nav-link" data-section="contact">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hamburger -->
+            <button class="nav-hamburger" id="nav-hamburger"
+                    aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Overlay -->
+        <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
     </header>
 
     <main>
-        <!-- Hero & About Merged Section -->
-        <section id="home" class="hero-merged scroll-spy-target">
-            <div class="hero-container">
-                <div class="container hero-content">
-                    <div class="cyber-telemetry"
-                        style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--highlight); margin-bottom: 1.5rem; opacity: 0.8; letter-spacing: 1px;">
-                        <span><i class="fas fa-network-wired"></i> STATUS: DISPONIBLE</span>
-                        <span><i class="fas fa-server"></i> FOCO: FRONTEND + REDES</span>
-                        <span><i class="fas fa-anchor"></i> OPEN_TO_WORK: TRUE</span>
-                    </div>
-                    <h1 class="headline">Hola, soy Felipe.<br>Construyo&nbsp;<span id="typewriter"></span></h1>
-                    <p class="description">Desarrollador Frontend y Arquitecto de Redes. Diseño interfaces modernas de
-                        alto impacto, estructuro infraestructuras de red eficientes y me complemento con desarrollo
-                        Backend para entregar soluciones integrales.</p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary shadow-glow">Ver mis Proyectos</a>
-                        <a href="#contact" class="btn btn-secondary">Hablemos</a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="about" class="about-container scroll-spy-target">
-                <div class="container">
-                    <div class="about-grid">
-                        <div class="about-image">
-                            <div class="image-box">
-                                <img src="./Pescador cibernético en traje oscuro.png" alt="Avatar Pez Diablo"
-                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
-                            </div>
-                        </div>
-                        <div class="about-info">
-                            <h2 class="section-title">Sobre Mí</h2>
-                            <h3 class="about-subtitle">Tecnología con propósito. Código con visión.</h3>
-                            <p class="about-text">
-    Soy <strong>Felipe Costa</strong>, estudiante de Computación especializado en Desarrollo Frontend y Redes. Me apasiona crear interfaces modernas, accesibles y de alto rendimiento, combinando diseño, experiencia de usuario y tecnología para construir soluciones digitales eficientes.
-
-    Además de mi enfoque en Frontend, cuento con conocimientos en redes, bases de datos y desarrollo Backend, lo que me permite comprender los proyectos de forma integral y adaptarme a distintos desafíos tecnológicos.
-
-    Actualmente busco oportunidades para seguir creciendo profesionalmente, aportar valor a proyectos innovadores y continuar ampliando mis conocimientos en desarrollo de software e infraestructura tecnológica.
-</p>
-                            <div class="hero-actions">
-                                <a href="#contact" class="btn btn-primary">Contactame</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="sections alt-bg">
+        <!-- ═══ HERO ═══ -->
+        <section id="home" class="hero-section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Formación Académica</h2>
+                <div class="hero-content">
+                    <div class="cyber-telemetry">
+                        <span class="telemetry-item"><i class="fas fa-microchip"></i> TÉCNICO EN COMPUTACIÓN</span>
+                        <span class="telemetry-item"><i class="fas fa-network-wired"></i> REDES &amp; SISTEMAS</span>
+                        <span class="telemetry-item status-active"><i class="fas fa-signal"></i> STATUS: DISPONIBLE</span>
+                        <span class="telemetry-item"><i class="fas fa-water"></i> PROFUNDIDAD: 1200M ABISAL</span>
+                    </div>
+
+                    <h1 class="headline">
+                        Hola, soy <span class="headline-accent">Felipe Costa</span>.<br>
+                        Construyo <span id="typewriter"></span>
+                    </h1>
+
+                    <p class="description">
+                        <strong>Técnico en Computación</strong> especializado en
+                        <strong>Frontend Development, Redes &amp; Telecomunicaciones y Sistemas</strong>.
+                        Diseño interfaces modernas de alto impacto, estructuro arquitecturas de red
+                        eficientes y desarrollo proyectos tecnológicos integrales.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary shadow-glow">
+                            <i class="fas fa-project-diagram"></i> Explorar Proyectos
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contactarme
+                        </a>
+                    </div>
                 </div>
-                <div class="timeline" id="education-timeline"></div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="sections">
-            <div class="container project-section-container">
+        <!-- ═══ ABOUT ═══ -->
+        <section id="about" class="about-section alt-bg">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="image-box">
+                            <img src="./Pescador cibernético en traje oscuro.png"
+                                 alt="Felipe Costa - Técnico en Computación">
+                            <div class="image-overlay-badge">
+                                <i class="fas fa-terminal"></i> TECNOLOGÍA + SOFTWARE + HARDWARE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-info">
+                        <h2 class="section-title">Sobre Mí</h2>
+                        <p class="about-subtitle">Tecnología de precisión. Código robusto. Redes eficientes.</p>
+
+                        <p class="about-text">
+                            Soy <strong>Felipe Costa</strong>, Técnico en Computación con especialización en
+                            <strong>Desarrollo Frontend, Redes e Infraestructura de Sistemas</strong>.
+                            Me apasiona construir interfaces modernas, intuitivas y de alto rendimiento,
+                            fusionando diseño web de vanguardia con una sólida comprensión de la
+                            infraestructura tecnológica subyacente.
+                        </p>
+
+                        <p class="about-text">
+                            Mi perfil combina la programación de aplicaciones web dinámicas con la
+                            <strong>arquitectura de redes LAN, gestión de bases de datos,
+                            electrónica/robótica y soporte técnico integral de hardware</strong>.
+                            Esta perspectiva multidisciplinaria me permite abordar proyectos
+                            tecnológicos desde la concepción hasta la experiencia final del usuario.
+                        </p>
+
+                        <div class="about-highlights-grid">
+                            <div class="about-card-mini">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Frontend Dev</h4>
+                                <p>Interfaces modernas, React, JS/TS, CSS fluido y accesibilidad UX.</p>
+                            </div>
+                            <div class="about-card-mini">
+                                <i class="fas fa-network-wired"></i>
+                                <h4>Redes &amp; Telecom</h4>
+                                <p>Infraestructura LAN, Cisco Packet Tracer, Wi-Fi y WebSockets.</p>
+                            </div>
+                            <div class="about-card-mini">
+                                <i class="fas fa-server"></i>
+                                <h4>Sistemas &amp; Hardware</h4>
+                                <p>PostgreSQL, Python, Node, reparación de PC y electrónica.</p>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-envelope"></i> Iniciar Contacto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SKILLS ═══ -->
+        <section id="skills" class="sections">
+            <div class="container">
                 <div class="section-header centered">
-                    <h2 class="section-title">Proyectos</h2>
-                    <p class="section-subtitle">Soluciones reales desarrolladas de principio a fin</p>
+                    <h2 class="section-title">Habilidades Técnicas</h2>
+                    <p class="section-subtitle">// PROGRAMACIÓN + REDES + HARDWARE + SISTEMAS</p>
+                </div>
+
+                <div class="skills-categorized-container">
+                    <div class="skills-category-card glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-code category-icon"></i>
+                            <h3>1. FRONTEND DEVELOPMENT</h3>
+                        </div>
+                        <div class="skills-grid" id="frontend-skills"></div>
+                    </div>
+
+                    <div class="skills-category-card glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-server category-icon"></i>
+                            <h3>2. BACKEND &amp; SISTEMAS</h3>
+                        </div>
+                        <div class="skills-grid" id="backend-skills"></div>
+                    </div>
+
+                    <div class="skills-category-card glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-network-wired category-icon"></i>
+                            <h3>3. REDES Y TELECOMUNICACIONES</h3>
+                        </div>
+                        <div class="skills-grid" id="redes-skills"></div>
+                    </div>
+
+                    <div class="skills-category-card glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-microchip category-icon"></i>
+                            <h3>4. HARDWARE, ROBÓTICA &amp; HERRAMIENTAS</h3>
+                        </div>
+                        <div class="skills-grid" id="hardware-skills"></div>
+                    </div>
+
+                    <div class="skills-category-card glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-user-check category-icon"></i>
+                            <h3>5. HABILIDADES BLANDAS &amp; GESTIÓN</h3>
+                        </div>
+                        <div class="skills-grid" id="blandas-skills"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PROJECTS ═══ -->
+        <section id="projects" class="sections">
+            <div class="container">
+                <div class="section-header centered">
+                    <h2 class="section-title">Proyectos Tecnológicos</h2>
+                    <p class="section-subtitle">// Selecciona "VER PROCESO" para ingresar al Museo 3D Submarino</p>
 
                     <div class="project-filters">
-                        <button class="filter-btn active" data-filter="todos">Todos</button>
-                        <button class="filter-btn" data-filter="web">Web</button>
-
-                        <button class="filter-btn" data-filter="programas">Sistemas</button>
+                        <button class="filter-btn active" data-filter="todos">Todos los Proyectos</button>
+                        <button class="filter-btn" data-filter="web">Plataformas Web</button>
+                        <button class="filter-btn" data-filter="programas">Sistemas &amp; Software</button>
                     </div>
                 </div>
 
-                <div class="project-scene">
-                    <div class="project-ring" id="project-container">
-                        <!-- Projects rendered here by JS -->
-                    </div>
-                </div>
-
-
+                <!-- Projects Grid (rendered by JS) -->
+                <div class="projects-grid" id="project-container"></div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="sections alt-bg">
+        <!-- ═══ EDUCATION ═══ -->
+        <section id="education" class="sections alt-bg">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Habilidades</h2>
+                <div class="section-header centered">
+                    <h2 class="section-title">Trayectoria &amp; Formación</h2>
+                    <p class="section-subtitle">// Especialización técnica continua en computación, redes e inteligencia artificial</p>
                 </div>
-                <div class="skills-wrapper">
-                    <!-- Especialidades Técnicas (Especialidad) -->
-                    <div class="skills-block specialty-block">
-                        <div class="block-header">
-                            <span class="block-badge"><i class="fas fa-star"></i> Especialidad</span>
-                            <h3 class="block-title">Foco Principal & Especialidades</h3>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Frontend (Interfaces & Experiencia de Usuario)</h3>
-                            <div class="skills-grid" id="frontend-skills"></div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Redes e Infraestructura (Conectividad & Flujo)</h3>
-                            <div class="skills-grid" id="tools-skills"></div>
-                        </div>
-                    </div>
-
-                    <!-- Competencias Complementarias (Complementarios) -->
-                    <div class="skills-block complementary-block">
-                        <div class="block-header">
-                            <span class="block-badge complement-badge"><i class="fas fa-project-diagram"></i>
-                                Complementario</span>
-                            <h3 class="block-title">Tecnologías Complementarias</h3>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Backend & Bases de Datos (Integración Funcional)</h3>
-                            <div class="skills-grid" id="backend-skills"></div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Habilidades Blandas & Gestión de Proyectos</h3>
-                            <div class="skills-grid" id="blandas-skills"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="timeline" id="education-timeline"></div>
             </div>
         </section>
 
@@ -175,43 +255,39 @@
             <div class="container">
                 <div class="contact-card-v2 glass-card">
                     <div class="contact-visual">
-                        <div class="cyber-graffiti">HIRE<br><span>ME</span></div>
-                        <p class="contact-subtext">¿Buscás incorporar un desarrollador Frontend con visión en redes e
-                            infraestructura? Cuéntame sobre tu equipo y veamos cómo puedo sumar.</p>
+                        <div class="cyber-graffiti">CONECTEMOS<br><span>NETWORK</span></div>
+                        <p class="contact-subtext">
+                            ¿Buscas incorporar a tu equipo un <strong>Técnico en Computación y Desarrollador Frontend</strong> con sólida perspectiva en redes e infraestructura? Cuéntame sobre tu propuesta.
+                        </p>
                         <div class="social-links-contact">
-                            <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i
-                                    class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank"
-                                title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                             <a href="mailto:felipelucero534@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                     <div class="contact-form-container">
-                        <form action="https://formsubmit.co/felipelucero534@gmail.com" method="POST"
-                            class="contact-form-v2">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject"
-                                value="Nueva oportunidad desde el Portfolio de Felipe Costa">
+                        <form action="https://formsubmit.co/felipelucero534@gmail.com" method="POST" class="contact-form-v2">
+                            <input type="hidden" name="_subject" value="Nueva Oportunidad — Portfolio Felipe Costa">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_captcha" value="false">
 
                             <div class="input-group">
                                 <input type="text" name="name" id="name" required placeholder=" ">
-                                <label for="name">Nombre completo</label>
+                                <label for="name">Nombre Completo</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
                                 <input type="email" name="email" id="email" required placeholder=" ">
-                                <label for="email">Correo electrónico</label>
+                                <label for="email">Correo Electrónico</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
                                 <textarea name="message" id="message" required placeholder=" "></textarea>
-                                <label for="message">Cuéntame sobre el rol o propuesta...</label>
+                                <label for="message">Detalles del rol o proyecto...</label>
                                 <div class="input-line"></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-cyber">
-                                <span>Enviar mensaje</span>
+                                <span>Enviar Mensaje</span>
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </form>
@@ -221,10 +297,10 @@
         </section>
     </main>
 
-    <!-- Project Modal - The "Magic" -->
+    <!-- Modal 1: Project Preview Modal -->
     <div class="modal-overlay" id="project-modal">
         <div class="modal-content glass-card">
-            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <button class="modal-close" aria-label="Cerrar modal"><i class="fas fa-times"></i></button>
             <div class="modal-body-rich">
                 <div class="modal-main-content">
                     <span id="modal-category" class="modal-category-tag">Categoría</span>
@@ -232,21 +308,15 @@
 
                     <div class="modal-gallery-premium">
                         <div class="mesh-bg-modal"></div>
-                        <div class="gallery-slider" id="gallery-slider">
-                            <!-- Images will be injected here -->
-                        </div>
+                        <div class="gallery-slider" id="gallery-slider"></div>
                         <div class="gallery-controls">
-                            <button class="gallery-prev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="gallery-next"><i class="fas fa-chevron-right"></i></button>
+                            <button class="gallery-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                            <button class="gallery-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="gallery-dots" id="gallery-dots"></div>
-                        <div class="floating-shapes">
-                            <span class="shape s1"></span>
-                            <span class="shape s2"></span>
-                            <span class="shape s3"></span>
-                        </div>
                         <i id="modal-icon"></i>
                     </div>
+
                     <div class="modal-description-section">
                         <h3>Descripción del Proyecto</h3>
                         <p id="modal-long-desc">Descripción detallada...</p>
@@ -256,21 +326,24 @@
                         </div>
                     </div>
                 </div>
+
                 <aside class="modal-sidebar">
                     <div class="sidebar-block">
                         <h4>Tecnologías Utilizadas</h4>
                         <div class="modal-tags" id="modal-tags"></div>
                     </div>
                     <div class="sidebar-block">
-                        <h4>Recursos del Proyecto</h4>
+                        <h4>Acciones & Experiencia 3D</h4>
                         <div class="modal-actions-sidebar">
-                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank"><i
-                                    class="fab fa-github"></i> Código fuente</a>
-                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank"><i
-                                    class="fas fa-external-link-alt"></i> Demo en vivo</a>
-                            <a href="#" class="btn-modal btn-primary btn-cyber" id="modal-process"
-                                style="margin-top: 1rem; width: 100%;"><i class="fas fa-terminal"></i> Ver proceso de
-                                desarrollo</a>
+                            <a href="#" class="btn-modal btn-outline" id="modal-repo" target="_blank">
+                                <i class="fab fa-github"></i> Código Fuente
+                            </a>
+                            <a href="#" class="btn-modal btn-solid" id="modal-demo" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Demo en Vivo
+                            </a>
+                            <button class="btn-modal btn-primary btn-cyber" id="modal-process-trigger" style="margin-top: 1rem; width: 100%;">
+                                <i class="fas fa-cube"></i> VER PROCESO (MUSEO 3D)
+                            </button>
                         </div>
                     </div>
                 </aside>
@@ -278,9 +351,75 @@
         </div>
     </div>
 
+    <!-- Modal 2: 3D SUBMARINE TECH MUSEUM OVERLAY ("VER PROCESO") -->
+    <div id="museum-overlay" class="museum-overlay">
+        <!-- Submarine Dive Loading Screen -->
+        <div id="museum-loading-screen" class="museum-loading-screen">
+            <div class="dive-spinner"></div>
+            <div class="dive-hud">
+                <div class="dive-depth-box">
+                    <span class="label">PROFUNDIDAD ABISAL</span>
+                    <span id="museum-depth-readout" class="depth">0m</span>
+                </div>
+                <div id="museum-loading-text" class="status-msg">INICIALIZANDO SISTEMA SUBMARINO...</div>
+            </div>
+        </div>
 
-    <footer class="footer-terminal" onclick="if(!event.target.closest('a')) window.location.href='#projects'"
-        style="cursor: pointer;" title="Ir a Proyectos">
+        <!-- 3D Three.js Museum Canvas Container -->
+        <div id="museum-3d-canvas-container" class="museum-3d-canvas-container"></div>
+
+        <!-- Top Museum HUD Navigation Header -->
+        <header class="museum-hud-header">
+            <div class="museum-hud-title-box">
+                <span id="museum-hud-category" class="cat">CATEGORÍA</span>
+                <h2 id="museum-hud-title">NOMBRE DEL PROYECTO</h2>
+            </div>
+            <button class="museum-close-btn" onclick="window.MuseumOverlayController.closeMuseum()">
+                <i class="fas fa-times"></i> SALIR DEL MUSEO
+            </button>
+        </header>
+
+        <!-- Museum Stage Stepper HUD -->
+        <div class="museum-hud-stepper-wrapper">
+            <div id="museum-hud-stepper" class="museum-hud-stepper">
+                <!-- Step buttons dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Bottom-Right Stage Info Card -->
+        <aside id="museum-stage-card" class="museum-stage-card glass-card">
+            <div class="card-header-mini">
+                <span id="museum-stage-counter" class="counter">ESTACIÓN 1 DE 5</span>
+                <span id="museum-stage-date" class="date">JULIO 2024</span>
+            </div>
+            <h3 id="museum-stage-title">Título de la Estación</h3>
+            <p id="museum-stage-desc">Descripción detallada del avance del proyecto en esta etapa...</p>
+            
+            <div class="stage-tech-box">
+                <h4>Tecnologías de la etapa</h4>
+                <div id="museum-stage-tech" class="stage-tags"></div>
+            </div>
+
+            <div class="stage-gallery-box">
+                <h4>Imágenes / Capturas</h4>
+                <div id="museum-stage-gallery" class="stage-thumbs-grid"></div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Lightbox Zoom Modal for Images -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close" onclick="document.getElementById('lightbox-modal').style.display='none'">&times;</span>
+        <button class="lightbox-btn lightbox-prev" onclick="window.prevLightboxImage()"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Captura ampliada">
+        </div>
+        <button class="lightbox-btn lightbox-next" onclick="window.nextLightboxImage()"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+    </div>
+
+    <!-- Footer Terminal -->
+    <footer class="footer-terminal" onclick="if(!event.target.closest('a')) window.location.href='#projects'" style="cursor: pointer;" title="Ir a Proyectos">
         <canvas id="matrix-canvas-footer" class="matrix-canvas"></canvas>
         <div class="footer-terminal-content">
             <div class="terminal-header">
@@ -288,83 +427,28 @@
                 <div class="terminal-dot td-yellow"></div>
                 <div class="terminal-dot td-green"></div>
             </div>
-
             <div class="terminal-line">
-                <span class="term-prompt">felipe-costa@abyss:~$</span>
-                <span class="term-command">./connect --status --open-to-work</span>
+                <span class="term-prompt">felipe-costa@abyss-net:~$</span>
+                <span class="term-command">./status --profile --tech-marine</span>
             </div>
             <div class="terminal-line" style="color: var(--highlight);">
-                > Portfolio de Felipe Costa — Conexión establecida correctamente.
+                > Felipe Costa — Técnico en Computación | Frontend, Redes & Sistemas. Conexión Establecida (1200m).
             </div>
-            <div class="terminal-line"
-                style="color: var(--primary); font-weight: bold; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                > Sistema activo. [ Clic en la terminal para volver a Proyectos ] <i
-                    class="fas fa-level-up-alt fa-flip-horizontal" style="animation: pulse 2s infinite;"></i>
-            </div>
-
-            <div class="terminal-line" style="margin-top: 1rem;">
-                <span class="term-prompt">felipe-costa@abyss:~$</span>
-                <span class="term-command">./contact --recruiter --linkedin --github</span>
-            </div>
-
             <div class="terminal-links" style="justify-content: flex-start; margin-top: 0.5rem;">
-                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub"
-                    onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn"
-                    onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:felipelucero534@gmail.com" title="Email" onclick="event.stopPropagation();"><i
-                        class="fas fa-envelope"></i></a>
+                <a href="https://github.com/felipelucerocosta" target="_blank" title="GitHub" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/felipe-lucero-costa-37209332b/" target="_blank" title="LinkedIn" onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:felipelucero534@gmail.com" title="Email" onclick="event.stopPropagation();"><i class="fas fa-envelope"></i></a>
             </div>
-            <span class="terminal-copyright"
-                style="display: block; text-align: right; margin-top: -1rem; margin-right: 1.5rem;">&copy; 2026 Felipe
-                Costa — Disponible para oportunidades profesionales.</span>
+            <span class="terminal-copyright">&copy; 2026 Felipe Costa — Todos los derechos reservados.</span>
         </div>
     </footer>
-    <script>
-        // Matrix Rain Footer Script
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('matrix-canvas-footer');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
 
-            canvas.width = window.innerWidth;
-            canvas.height = canvas.parentElement.offsetHeight;
-
-            const chars = '01'; // Clean binary rain for network feeling
-            const fontSize = 14;
-            let columns = canvas.width / fontSize;
-            let drops = Array.from({ length: columns }).fill(1);
-
-            function draw() {
-                ctx.fillStyle = 'rgba(2, 1, 8, 0.1)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = 'rgba(177, 94, 255, 0.25)'; // Subdued elegant purple rain
-                ctx.font = fontSize + 'px monospace';
-
-                for (let i = 0; i < drops.length; i++) {
-                    const text = chars[Math.floor(Math.random() * chars.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-            setInterval(draw, 33);
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = canvas.parentElement.offsetHeight;
-                columns = canvas.width / fontSize;
-                drops = Array.from({ length: columns }).fill(1);
-            });
-        });
-    </script>
-
-    <script src="js/data.js?v=1"></script>
-    <script src="js/main.js?v=3"></script>
+    <!-- JS Application Modules -->
+    <script src="js/data.js?v=3"></script>
+    <script src="js/3d/OceanScene.js?v=3"></script>
+    <script src="js/3d/MuseumScene.js?v=3"></script>
+    <script src="js/components/MuseumOverlay.js?v=3"></script>
+    <script src="js/main.js?v=5"></script>
 </body>
 
 </html>
